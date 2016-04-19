@@ -1,0 +1,168 @@
+<% include ../partials/header %>
+
+<!-- BODY HERE -->
+
+          <div class="col-lg-10 col-md-9">
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h2>Üdvözöllek!</h2>
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate distinctio magnam voluptates architecto. Iste soluta distinctio quaerat iure, sed natus a aliquid recusandae esse doloremque fuga ducimus officiis quod, ipsa, hic ipsam eveniet incidunt! Voluptatum, ducimus!</p>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                    <div class="pull-left"><h2>Tanuló csoportok</h2></div>
+                    <div class="pull-right">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-success btn-filter" data-target="pagado">Jövőbeli</button>
+                        <button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Megkezdett</button>
+                        <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Befejezett</button>
+                        <button type="button" class="btn btn-default btn-filter" data-target="all">Mind</button>
+                      </div>
+                    </div>
+
+                <div class="table-container">
+                  <table class="table table-filter">
+                    <tbody>
+
+                      <tr data-status="pagado">
+                        <td>
+                          <div class="ckbox">
+                            <input type="radio" name="csopi" id="checkbox1">
+                            <label for="checkbox1"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="media">
+                            <a href="full.html" class="pull-left">
+                              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                            </a>
+                            <div class="media-body">
+                              <span class="media-meta pull-right">2016, április 29. 21:00 - 2016, április 29. 21:00</span>
+                              <h4 class="title">
+                                Analízis 2
+                                <span class="pull-right pagado">(Jövőbeli)</span>
+                              </h4>
+                              <p class="summary">PZH-ra készülök, de nagyon reménytelennek érzem az...</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+
+
+                            <tr data-status="pagado">
+                              <td>
+                                <div class="ckbox">
+                                  <input type="radio" name="csopi" id="checkbox4">
+                                  <label for="checkbox4"></label>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="media">
+                                  <a href="full.html" class="pull-left">
+                                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                                  </a>
+                                  <div class="media-body">
+                                    <span class="media-meta pull-right">2016, április 12. 19:00 - 2016, április 13. 01:00</span>
+                                    <h4 class="title">
+                                      Prog 2
+                                      <span class="pull-right pagado">(Jövőbeli)</span>
+                                    </h4>
+                                    <p class="summary">HFTEST-tel próbálkozok.</p>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+
+                            <tr data-status="pendiente">
+                              <td>
+                                <div class="ckbox">
+                                  <input type="radio" name="csopi" id="checkbox5">
+                                  <label for="checkbox5"></label>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="media">
+                                  <a href="full.html" class="pull-left">
+                                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                                  </a>
+                                  <div class="media-body">
+                                    <span class="media-meta pull-right">2016, április 12. 17:00 - 2016, április 12. 19:00</span>
+                                    <h4 class="title">
+                                      OFF
+                                      <span class="pull-right pendiente">(Megkezdett)</span>
+                                    </h4>
+                                    <p class="summary">Kiültem inni és CS-zni :D </p>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+
+                      <tr data-status="pendiente">
+                        <td>
+                          <div class="ckbox">
+                            <input type="radio" name="csopi" id="checkbox3">
+                            <label for="checkbox3"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="media">
+                            <a href="full.html" class="pull-left">
+                              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                            </a>
+                            <div class="media-body">
+                              <span class="media-meta pull-right">2016, április 12. 16:00 - 2016, április 12. 18:30</span>
+                              <h4 class="title">
+                                BSz 2
+                                <span class="pull-right pendiente">(Megkezdett)</span>
+                              </h4>
+                              <p class="summary">Nagyon le vagyok maradva, szóval az eddigi anyagokat...</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+
+
+                      <tr data-status="cancelado">
+                        <td>
+                          <div class="ckbox">
+                            <input type="radio" name="csopi" id="checkbox2" disabled="">
+                            <label for="checkbox2"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="media">
+                            <a href="#" class="pull-left">
+                              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                            </a>
+                            <div class="media-body">
+                              <span class="media-meta pull-right">2016, március 9. 21:00 - 2016, március 9. 23:00</span>
+                              <h4 class="title">
+                                ReMo
+                                <span class="pull-right cancelado">(Befejezett)</span>
+                              </h4>
+                              <p class="summary">Ezt az idióta házit próbálom megcsinálni, egész jól megy.</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+                <div class="pull-left">
+                  <a href="csat.html" class="btn btn-primary" >Csatlakozok a csoporthoz</a>
+                </div>
+                <div class="pull-right">
+                    <a href="uj_csopi.html" class="btn btn-success">Új csopot létrehozása</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+    <!-- BODY END -->
+<% include ../partials/scripts %>
+<% include ../partials/footer %>
