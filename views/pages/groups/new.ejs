@@ -1,0 +1,48 @@
+<%- include('../../partials/header'); %>
+
+<!-- BODY HERE -->
+
+          <div class="col-lg-10 col-md-9">
+
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+
+              <h2>Új csoport</h2>
+              <form method="POST" action="csoport/add">
+                <fieldset class="form-group">
+                  <label for="exampleSelect1">Nev</label>
+                    <input class="form-control input-lg" type="text" name="name">
+                  </select>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="exampleSelect1">datum1</label>
+                      <input class="form-control input-lg" type="text" name="start_date">
+                    </select>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="exampleSelect1">datum2</label>
+                      <input class="form-control input-lg" type="text" name="end_date">
+                    </select>
+                  </fieldset>
+                <fieldset class="form-group">
+                  <label for="exampleSelect1">Tárgy</label>
+                  <select class="form-control input-lg" name="subject">
+                      <% subjects.forEach(function(subject) { %>
+                    <option value="<%= subject.id %>"><%= subject.subject_name %></option>
+                    <% }); %>
+                  </select>
+                </fieldset>
+                <fieldset class="form-group">
+                  <label for="exampleTextarea">Megjegyzés</label>
+                  <textarea class="form-control input-lg" rows="3" name="desciption"></textarea>
+                </fieldset>
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-success">Új csoport létrehozása</a>
+                  </div>
+              </form>
+            </div>
+          </div>
+
+    <!-- BODY END -->
+<%- include('../../partials/footer'); %>

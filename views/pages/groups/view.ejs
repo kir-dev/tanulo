@@ -1,0 +1,24 @@
+<%- include('../../partials/header'); %>
+
+<!-- BODY HERE -->
+
+          <div class="col-lg-10 col-md-9">
+
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+
+                      <% groups.forEach(function(group) { %>
+                      <h2>  <%= group.subject_name %> -
+                        <%= group.name %></h2>
+                      <%= group.start_date %> - <%= group.end_date %></span>
+                              <p class="summary"><%= group.description %></p>
+                            </div>
+                          </div>
+                      <% }); %>
+
+
+
+              </div>
+    <!-- BODY END -->
+<%- include('../../partials/footer'); %>
