@@ -1,13 +1,11 @@
 {
-  "name": "authsch-strategy",
-  "version": "1.0.0",
-  "description": "PassportJS oauth2 strategy for AuthSch",
+  "name": "Tanulo",
+  "version": "0.0.1",
+  "description": "",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
-  "author": "Krisztian Pillis",
-  "license": "ISC",
   "dependencies": {
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
