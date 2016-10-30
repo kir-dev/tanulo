@@ -29,13 +29,13 @@
                   <label for="exampleSelect1">Tárgy</label>
                   <select class="form-control input-lg" name="subject">
                       <% subjects.forEach(function(subject) { %>
-                    <option value="<%= subject.id %>"><%= subject.subject_name %></option>
+                    <option value="<%= subject.subject_id %>"><%= subject.subject_name %></option>
                     <% }); %>
                   </select>
                 </fieldset>
                 <fieldset class="form-group">
                   <label for="exampleTextarea">Megjegyzés</label>
-                  <textarea class="form-control input-lg" rows="3" name="desciption"></textarea>
+                  <textarea class="form-control input-lg" rows="3" name="description"></textarea>
                 </fieldset>
                 <div class="pull-right">
                     <button type="submit" class="btn btn-success">Új csoport létrehozása</a>
