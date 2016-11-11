@@ -21,8 +21,7 @@ router.get('/lista', function(req, res, next) {
           return res.status(500).json({ success: false, data: err});
         }
 
-
-        var query = client.query("SELECT * FROM db_group INNER JOIN db_subject ON db_group.subject_id=db_subject.subject_id");
+        var query = client.query("SELECT * FROM db_group INNER JOIN db_subject ON db_group.subject_id=db_subject.s_id");
 
 
         query.on('row', function(row) {
@@ -49,7 +48,7 @@ router.get('/nezet/:id', function(req, res, next) {
         console.log(err);
         return res.status(500).json({ success: false, data: err});
       }
-     var query = client.query("SELECT * FROM db_group JOIN db_subject ON db_group.subject_id=db_subject.subject_id AND db_group.group_id = " + req.params.id + "");
+     var query = client.query("SELECT * FROM db_group JOIN db_subject ON db_group.subject_id=db_subject.s_id AND db_group.id = " + req.params.id + "");
 
 
       query.on('row', function(row) {
@@ -99,7 +98,8 @@ router.post('/add', function(req, res, next) {
               console.log(err);
               return res.status(500).json({ success: false, data: err});
             }
-            client.query("INSERT INTO db_group(group_name, group_description, group_start_date, group_end_date, subject_id) values($1, $2, $3, $4, $5)", [req.body.name, req.body.description, req.body.start_date, req.body.end_date, req.body.subject]);
+
+            client.query("INSERT INTO db_group(name, description, start_date, end_date, subject_id) values($1, $2, $3, $4, $5)", [req.body.name, req.body.description, req.body.start_date, req.body.end_date, req.body.subject ]);
           });
   res.redirect('/csoport/lista');
 });

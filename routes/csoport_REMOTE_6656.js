@@ -21,7 +21,6 @@ router.get('/lista', function(req, res, next) {
           return res.status(500).json({ success: false, data: err});
         }
 
-
         var query = client.query("SELECT * FROM db_group INNER JOIN db_subject ON db_group.subject_id=db_subject.subject_id");
 
 

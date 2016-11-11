@@ -10,9 +10,9 @@
 
                       <% groups.forEach(function(group) { %>
                       <h2>  <%= group.subject_name %> -
-                        <%= group.name %></h2>
-                      <%= group.start_date %> - <%= group.end_date %></span>
-                              <p class="summary"><%= group.description %></p>
+                        <%= group.group_name %></h2>
+                      <%= group.group_start_date %> - <%= group.group_end_date %></span>
+                              <p class="summary"><%= group.group_description %></p>
                             </div>
                           </div>
                       <% }); %>
