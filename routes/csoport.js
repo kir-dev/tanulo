@@ -58,7 +58,7 @@ router.get('/nezet/:id', function(req, res, next) {
 
 
       query.on('end', function() {
-        res.render('pages/groups/view', {userData: req.user, groups: results, active: req.active});
+        res.render('pages/groups/view', {userData: req.user, group_history: results, active: req.active});
       });
 
   });
