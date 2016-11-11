@@ -38,5 +38,9 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.get('/settings', function(req, res, next) {
+  res.render('pages/settings');
+}
+
 
 module.exports = router;

@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 var authorizationRoutes = require('./routes/auth');
 var group = require('./routes/csoport');
 var help = require('./routes/help');
+var settings = require('./routes/settings');
+var history = require('./routes/history');
 
 var configuration = require('./config.json');
 var passport = require('passport'),
@@ -79,6 +81,8 @@ app.use(function(req, res, next){
 app.use('/auth', authorizationRoutes);
 app.use('/csoport', group);
 app.use('/help', help);
+app.use('/beallitasok/profil', settings);
+app.use('/elozmenyek/lista', history);
 
 app.get('/', function (req, res, next) {
     if (req.isAuthenticated()) {
@@ -87,6 +91,8 @@ app.get('/', function (req, res, next) {
         res.render('login');
     }
 });
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

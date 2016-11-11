@@ -1,0 +1,12 @@
+
+{
+ "db_host" : "127.0.0.1",
+ "db_port" : 5432,
+ "db_user" : "postgres",
+ "db_pass" : "fapapucs",
+ "db_name" : "test",
+ "CLIENT_ID": "97707147653523147753",
+ "CLIENT_SECRET": "mKEL1xp52Y7oyHVsUOadAJOnAilqKubx5g0vUpqLDmz3uLlFZBiaLxDLWo3hZUUT1TFK9vWCYL5JXfOx",
+ "scope": ["displayName","mail","mobile","roomNumber","entrants","eduPersonEntitlement","entrants"],
+ "sessionSecret": "dfgjkjlsdfjkl"
+}
