@@ -30,7 +30,7 @@ router.use('/example/callback',
       // Sikeres azonositas
       client.connect();
       client.query("SELECT * FROM db_user WHERE user_authsch_id = '$1'", [req.user.internal_id], function(err, result) {
-      if(result.rows.length == false){ //Regisztralt?
+      if(result){ //Regisztralt?
             client.query("INSERT INTO db_user(user_name, user_authsch_id, user_avatar) values($1, $2, $3)", [req.user.displayName, req.user.internal_id, 'default.jpg']);
         }
       });
