@@ -7,11 +7,12 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.STRING,
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE
+
   }, {
     classMethods: {
     //  associate: function(models){
-      //  Group.hasMany(models.User);
-    //  }
+    //   Group.hasMany(models.User);
+  //  }
     }
   });
   return Group;

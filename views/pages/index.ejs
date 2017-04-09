@@ -32,17 +32,14 @@
                         </td>
                         <td>
                           <div class="media">
-                            <a href="/csoport/nezet/<%= group.group_id %>" class="pull-left">
-                              <img src="http://martinstaxes.com/msds/wp-content/uploads/2015/12/link-icon.png" class="media-photo">
-                            </a>
+                            
                             <div class="media-body">
-                              <span class="media-meta pull-right"><%= group.group_start_date %> - <%= group.group_end_date %></span>
+                              <span class="media-meta pull-right"><%= group.startDate %> - <%= group.endDate %></span>
                               <h4 class="title">
-                                <%= group.subject_name %> -
-                                <%= group.group_name %>
+                                <%= group.name %>
                                 <span class="pull-right pagado">(Jövőbeli)</span>
                               </h4>
-                              <p class="summary"><%= group.group_description %></p>
+                              <p class="summary"><%= group.description %></p>
                             </div>
                           </div>
                         </td>
