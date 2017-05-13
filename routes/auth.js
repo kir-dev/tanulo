@@ -29,7 +29,8 @@ router.use('/example/callback',
     passport.authenticate('oauth2', {failureRedirect: '/auth/example'}),
     function (req, res) {
       // Sikeres azonositas
-      models.User.findOrCreate({
+
+      models.user.findOrCreate({
         where: {authschId: req.user.internal_id},
          defaults: {
            name: req.user.displayName,

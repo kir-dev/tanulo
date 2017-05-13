@@ -12,7 +12,7 @@ passport.authenticate('oauth2', {failureRedirect: '/auth/example'}),
 router.get('/lista', function(req, res, next) {
 
     if (!req.isAuthenticated()) { res.redirect('/'); }
-    models.Group.findAll({
+    models.group.findAll({
       order: [
         ['name', 'ASC']
       ]
@@ -61,7 +61,7 @@ router.get('/uj', function(req, res, next) {
 
 router.post('/add', function(req, res, next) {
     if (!req.isAuthenticated()) { res.redirect('/'); }
-    models.Group.create({
+    models.group.create({
         name: req.body.name,
         description: req.body.description,
         startDate: req.body.start_date,
