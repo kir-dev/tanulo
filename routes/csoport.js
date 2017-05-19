@@ -1,12 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-
 var passport = require('passport');
-//var pg = require('pg');
-//var config = require('../config.json');
-//var connectionString = "postgres://" + config.db_user  + ":" + config.db_pass +  "@" + config.db_host + ":" + config.db_port + "/" + config.db_name;
-
 
 passport.authenticate('oauth2', {failureRedirect: '/auth/example'}),
 router.get('/lista', function(req, res, next) {
@@ -21,6 +16,28 @@ router.get('/lista', function(req, res, next) {
     });
 
 
+
+});
+
+router.post('/join', function (req, res, next) {
+
+    Object.keys(req.body).map(function(objectKey, index) {
+        var value = req.body[objectKey];
+        if(value=='on') {
+            models.user.findAll({
+                where: {authschId: req.user.internal_id}
+            }).then(function (user) {
+                models.group.findById(objectKey)
+                    .then(function (group) {
+                        group.addUser(user);
+                    });
+            });
+        }
+
+        //TODO join group
+
+        res.redirect("/csoport/lista");
+    });
 
 });
 /*
@@ -53,6 +70,7 @@ router.get('/nezet/:id', function(req, res, next) {
 });*/
 router.get('/uj', function(req, res, next) {
     if (!req.isAuthenticated()) { res.redirect('/'); }
+    //TODO get subjects from db
     var results = [];
 
           res.render('pages/groups/new', {userData: req.user, subjects: results, active: req.active});

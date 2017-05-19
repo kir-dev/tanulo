@@ -1,6 +1,5 @@
 "use strict";
 
-
 module.exports = function(sequelize, DataTypes) {
   var Group = sequelize.define("group", {
     name: DataTypes.STRING,
@@ -9,11 +8,12 @@ module.exports = function(sequelize, DataTypes) {
     endDate: DataTypes.DATE
 
   }, {
-    classMethods: {
-    //  associate: function(models){
-    //   Group.hasMany(models.User);
-  //  }
-    }
-  });
+      classMethods: {
+          associate: function (models) {
+              Group.belongsToMany(models.user, {through: 'userGroup'});
+          }
+      }
+      });
+
   return Group;
 };

@@ -26,8 +26,8 @@
                       <tr data-status="pagado">
                         <td>
                           <div class="ckbox">
-                            <input type="radio" name="csopi" id="checkbox<%= group.group_id %>">
-                            <label for="checkbox<%= group.group_id %>"></label>
+                            <input type="radio" name="<%= group.id %>" id="checkbox<%= group.id %>">
+                            <label for="checkbox<%= group.id %>"></label>
                           </div>
                         </td>
                         <td>
@@ -57,7 +57,7 @@
 
                 </form>
                 <div class="pull-right">
-                    <a href="csoport/uj" class="btn btn-success">Új csopot létrehozása</a>
+                    <a href="csoport/uj" class="btn btn-success">Új csoport létrehozása</a>
                   </div>
               </div>
             </div>
