@@ -1,9 +1,0 @@
-git add (-A) //fájlok hozzáadása
-git commit -m "commit message" //commit közzététele
-git push origin master
-git checkout master //branchek közti váltás
-git merge (pl.) frontend //merge
-git clone //repo letöltése
-git pull (origin master) //legfrisebb verzió letöltés
-git init //repo létrehozás
-git remote add origin
