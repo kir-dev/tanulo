@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var authorizationRoutes = require('./routes/auth');
+var avaliability = require('./routes/avaliability');
 var group = require('./routes/group');
 var help = require('./routes/help');
 var settings = require('./routes/settings');
@@ -83,15 +84,7 @@ app.use('/csoport', group);
 app.use('/help', help);
 app.use('/beallitasok/profil', settings);
 app.use('/elozmenyek/lista', history);
-
-app.get('/', function (req, res, next) {
-    if (req.isAuthenticated()) {
-        res.redirect('/csoport/lista');
-    } else {
-        res.render('login');
-    }
-});
-
+app.use('/', avaliability);
 
 
 // catch 404 and forward to error handler
