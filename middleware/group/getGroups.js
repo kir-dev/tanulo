@@ -1,4 +1,4 @@
-module.exports = function(group) {
+module.exports = function(models) {
 
 
     return function (req, res, next) {
@@ -7,7 +7,7 @@ module.exports = function(group) {
             res.redirect('/');
         }
 
-        group.group.findAll({
+        models.group.findAll({
             order: [
                 ['name', 'ASC']
             ]
