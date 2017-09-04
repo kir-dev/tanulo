@@ -8,14 +8,13 @@
             <div class="panel panel-default">
               <div class="panel-body">
 
-                      <% groups.forEach(function(group) { %>
-                      <h2>  <%= group.subject_name %> -
-                        <%= group.group_name %></h2>
-                      <%= group.group_start_date %> - <%= group.group_end_date %></span>
-                              <p class="summary"><%= group.group_description %></p>
+
+                      <h2><%= group.group_name %></h2>
+                      </span>
+                              <p class="summary"><%= group.description %></p>
                             </div>
                           </div>
-                      <% }); %>
+
 
 
 
