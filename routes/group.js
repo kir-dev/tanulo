@@ -11,7 +11,7 @@ router.get('/lista', getGroups(models), function (req, res, next) {
     res.render('pages/index', {userData: req.user, groups: req.group, active: req.active});
 });
 
-router.post('/join', function (req, res, next) {
+router.post('/csatlakozas', function (req, res, next) {
 
     Object.keys(req.body).map(function(objectKey, index) {
         var value = req.body[objectKey];

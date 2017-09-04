@@ -16,16 +16,45 @@
 <div class="container">
     <hr>
     <div class="row">
-        <div class="col-sm-6">
-            <h1>TanuloSCH</h1>
-        </div>
-        <div class="col-sm-6">
-            <form class="pull-right" action="/auth/login" method="POST">
-                <button type="submit" name="button" class="login btn btn-lg btn-primary">Bejelentkezés AuthSch fiókkal
-                </button>
-            </form>
-        </div>
+    <div class="col-sm-6">
+        <h1>TanuloSCH</h1>
     </div>
+    <div class="col-sm-6">
+        <form class="pull-right" action="/auth/login" method="POST">
+            <button type="submit" name="button" class="login btn btn-lg btn-primary">Bejelentkezés AuthSch fiókkal</button>
+        </form>
+
+    </div></div>
+    <table class="table table-filter">
+        <tbody>
+        <% groups.forEach(function(group) { %>
+        <tr data-status="pagado">
+            <td>
+                <div class="ckbox">
+                    <input type="radio" name="<%= group.id %>" id="checkbox<%= group.id %>">
+                    <label for="checkbox<%= group.id %>"></label>
+                </div>
+            </td>
+            <td>
+                <div class="media">
+
+                    <div class="media-body">
+                        <span class="media-meta pull-right"><%= group.startDate %> - <%= group.endDate %></span>
+                        <h4 class="title">
+                            <%= group.name %>
+                            <span class="pull-right pagado">(Jövőbeli)</span>
+                        </h4>
+                        <p class="summary"><%= group.description %></p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <% }); %>
+
+
+
+        </tbody>
+    </table>
     <hr>
     <div class="panel panel-default">
         <div class="panel-body text-center">
