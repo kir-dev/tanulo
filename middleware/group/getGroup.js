@@ -7,13 +7,12 @@ module.exports = function(models, id) {
             res.redirect('/');
         }
 
-        models.group.findById(req.params.id)
+        models.group.find({ where: {id: req.params.id}, include: [models.user] })
             .then(function (group) {
 
             req.group = group;
 
             return next();
-            //
         });
     };
-}
+};

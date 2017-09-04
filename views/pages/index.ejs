@@ -25,18 +25,12 @@
                       <% groups.forEach(function(group) { %>
                       <tr data-status="pagado">
                         <td>
-                          <div class="ckbox">
-                            <input type="radio" name="<%= group.id %>" id="checkbox<%= group.id %>">
-                            <label for="checkbox<%= group.id %>"></label>
-                          </div>
-                        </td>
-                        <td>
                           <div class="media">
                             
                             <div class="media-body">
                               <span class="media-meta pull-right"><%= group.startDate %> - <%= group.endDate %></span>
                               <h4 class="title">
-                                <%= group.name %>
+                                <a href="csoport/nezet/<%= group.id %>"><%= group.name %></a>
                                 <span class="pull-right pagado">(Jövőbeli)</span>
                               </h4>
                               <p class="summary"><%= group.description %></p>
