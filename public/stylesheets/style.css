@@ -365,16 +365,16 @@ body {
 		opacity: 0;
 	}
 }
-.pulse[data-status="running"]:after, .pulse[data-status="running"]:before { background: rgba(127, 185, 0, 0.2); }
-.pulse[data-status="pending"]:after, .pulse[data-status="pending"]:before { background: rgba(243, 156, 18, 0.2); }
-.pulse[data-status="failed"]:after, .pulse[data-status="failed"]:before { background: rgba(192, 57, 43, 0.2); }
+.pulse[data-status="green"]:after, .pulse[data-status="green"]:before { background: rgba(127, 185, 0, 0.2); }
+.pulse[data-status="yellow"]:after, .pulse[data-status="yellow"]:before { background: rgba(243, 156, 18, 0.2); }
+.pulse[data-status="red"]:after, .pulse[data-status="red"]:before { background: rgba(192, 57, 43, 0.2); }
 
-.pulse[data-status="failed"] .status{
+.pulse[data-status="red"] .status{
 	background: rgba(192, 57, 43, 1);
 }
-.pulse[data-status="pending"] .status{
+.pulse[data-status="yellow"] .status{
 	background: rgba(243, 156, 18, 1);
 }
-.pulse[data-status="running"] .status{
+.pulse[data-status="green"] .status{
 	background: rgba(127, 185, 0, 1);
 }
