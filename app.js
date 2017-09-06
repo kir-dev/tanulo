@@ -12,6 +12,7 @@ var help = require('./routes/help');
 var settings = require('./routes/settings');
 var history = require('./routes/history');
 var user = require('./routes/users');
+var calendar = require('./routes/calendar');
 
 var configuration = require('./config.json');
 var passport = require('passport'),
@@ -87,6 +88,7 @@ app.use('/beallitasok/profil', settings);
 app.use('/elozmenyek/lista', history);
 app.use('/', avaliability);
 app.use('/felhasznalo', user);
+app.use('/tanulo', calendar);
 
 app.get('/', function (req, res, next) {
     if (req.isAuthenticated()) {
