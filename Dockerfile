@@ -5,10 +5,9 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package.json .
-# For npm@5 or later, copy package-lock.json as well
-COPY package.json .
 COPY package-lock.json .
-COPY config/config_exmaple.json config/.
+COPY /usr/src/app/config/config_example.json /usr/src/app/config/config.json
+
 RUN npm install
 
 # Bundle app source
