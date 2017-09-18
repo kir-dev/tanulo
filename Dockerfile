@@ -8,7 +8,7 @@ COPY package.json .
 # For npm@5 or later, copy package-lock.json as well
 COPY package.json .
 COPY package-lock.json .
-
+COPY config/config_exmaple.json config/.
 RUN npm install
 
 # Bundle app source
