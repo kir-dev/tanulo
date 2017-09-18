@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package.json .
 COPY package-lock.json .
-COPY /usr/src/app/config/config_example.json /usr/src/app/config/config.json
+COPY config/config_example.json config/config.json
 
 RUN npm install
 
