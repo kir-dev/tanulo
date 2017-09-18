@@ -10,13 +10,25 @@
 <div id='calendar'></div>
 </body>
 
+<% if (event) { %>
+<h2>I have a game state!</h2>
 <script>
-$(document).ready(function() {
+    var clientGameState = <%= event %>
+</script>
+<% } %>
+
+<script>
+    $(document).ready(function () {
 
 
-$('#calendar').fullCalendar({
-})
+            $('#calendar').fullCalendar({
+            editable: false,
+            header: {
+                right: 'agendaDay agendaWeek month'
+            },
+            events: eventObj
 
-});
+        });
+    });
 </script>
 </html>

@@ -55,7 +55,8 @@ router.post('/add', function(req, res, next) {
         name: req.body.name,
         description: req.body.description,
         startDate: req.body.start_date,
-        endDate: req.body.end_date
+        endDate: req.body.end_date,
+        room: req.body.room
     }).then(function(){
       res.redirect('/csoport/lista');
     }).catch(function(error){

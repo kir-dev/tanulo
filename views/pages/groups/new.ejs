@@ -25,20 +25,20 @@
                       <input class="form-control input-lg" type="datetime" name="end_date" placeholder="1999-01-08 04:05:06">
                     </select>
                   </fieldset>
-              <!--  <fieldset class="form-group">
-                  <label for="subject">Tárgy</label>
-                  <input class="form-control input-lg" name="subject" placeholder="3">
-                      <% subjects.forEach(function(subject) { %>
-                 <option value="<%= subject.subject_id %>"><%= subject.subject_name %></option>
-                    <% }); %>
-                  </select>
-                </fieldset> -->
+                  <fieldset class="form-group">
+                      <label for="room">Tanuló</label>
+                      <select id="room" name="room" size="1">
+                          <% for(var i = 3; i<=18;i++) { %>
+                          <option value = <%= i %>> <%=i %> </option>
+                          <% } %>
+                      </select>
+                  </fieldset>
                 <fieldset class="form-group">
                   <label for="comment">Leírás</label>
                   <textarea class="form-control input-lg" rows="3" name="description"></textarea>
                 </fieldset>
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-success">Új csoport létrehozása</a>
+                    <button type="submit" class="btn btn-success">Új csoport létrehozása</button>
                   </div>
               </form>
             </div>
