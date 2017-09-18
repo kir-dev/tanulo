@@ -10,9 +10,6 @@ COPY package.json package-lock.json .
 
 RUN npm install
 
-# Run pending migrations.
-sequelize db:migrate   
-
 # Bundle app source
 COPY . .
 
