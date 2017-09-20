@@ -16,16 +16,21 @@ module.exports = function(models) {
             groups.forEach(function (group) {
                 console.log('current group: ' + group);
                 console.log('group owner ' + group.name);
+                console.log('group name ' + group.description);
                eventsArray.push({
                    title: group.name,
                    start: group.startDate,
                    end: group.endDate
-               })
+               });
             });
 
             req.events = eventsArray;
+            eventsArray.forEach(function (element) {
+                console.log("eventsArray  " + element.title + element.start);
+            });
+
             return next();
             //
         });
     };
-}
+};
