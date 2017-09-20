@@ -14,12 +14,13 @@
 <script>
     $(document).ready(function () {
 
-        var roomNumber = 3;//window.location.pathname.substr(window.location.pathname - 1);
+        var roomNumber = window.location.pathname.substr(window.location.pathname.length - 1);
+        console.log("roomnunm" + roomNumber);
         $.ajax({
             url: "http://localhost:3000/tanulo/" + roomNumber + "/event",
             type: "GET",
             data: {
-                roomnumber: roomNumber
+                id: roomNumber
             },
             dataType: "json",
             success: function (response) {
