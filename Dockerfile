@@ -4,9 +4,7 @@ FROM node:8
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY package.json .
-COPY package-lock.json .
-COPY config/config_example.json config/config.json
+COPY .env.example .env
 
 RUN npm install
 
