@@ -48,7 +48,7 @@ passport.use(new OAuth2Strategy({
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         callbackURL: "/auth/example/callback",
-        scope: JSON.parse(process.env.SCOPT)
+        scope: JSON.parse(process.env.SCOPE)
     },
     function (accessToken, refreshToken, profile, cb) {
         console.log(accessToken + '\n' + refreshToken + '\n' + JSON.stringify
