@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+require('dotenv').config()
 
 var authorizationRoutes = require('./routes/auth');
 var group = require('./routes/csoport');
@@ -11,7 +12,6 @@ var help = require('./routes/help');
 var settings = require('./routes/settings');
 var history = require('./routes/history');
 
-var configuration = require('./config.json');
 var passport = require('passport'),
     OAuth2Strategy = require('passport-oauth2');
 var session = require('express-session');
@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(session({
-    secret: configuration.sessionSecret,
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
     cookie: {secure: false}
@@ -45,10 +45,10 @@ app.use(passport.session());
 passport.use(new OAuth2Strategy({
         authorizationURL: 'https://auth.sch.bme.hu/site/login',
         tokenURL: 'https://auth.sch.bme.hu/oauth2/token',
-        clientID: configuration.CLIENT_ID,
-        clientSecret: configuration.CLIENT_SECRET,
+        clientID: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
         callbackURL: "/auth/example/callback",
-        scope: configuration.scope
+        scope: JSON.parse(process.env.SCOPT)
     },
     function (accessToken, refreshToken, profile, cb) {
         console.log(accessToken + '\n' + refreshToken + '\n' + JSON.stringify
