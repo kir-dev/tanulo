@@ -16,15 +16,17 @@
 <div class="container">
     <hr>
     <div class="row">
-    <div class="col-sm-6">
-        <h1>TanuloSCH</h1>
-    </div>
-    <div class="col-sm-6">
-        <form class="pull-right" action="/auth/login" method="POST">
-            <button type="submit" name="button" class="login btn btn-lg btn-primary">Bejelentkezés AuthSch fiókkal</button>
-        </form>
+        <div class="col-sm-6">
+            <h1>TanuloSCH</h1>
+        </div>
+        <div class="col-sm-6">
+            <form class="pull-right" action="/auth/login" method="POST">
+                <button type="submit" name="button" class="login btn btn-lg btn-primary">Bejelentkezés AuthSch fiókkal
+                </button>
+            </form>
 
-    </div></div>
+        </div>
+    </div>
     <table class="table table-filter">
         <tbody>
         <% groups.forEach(function(group) { %>
@@ -51,8 +53,6 @@
         </tr>
         <% }); %>
 
-
-
         </tbody>
     </table>
     <hr>
@@ -60,29 +60,27 @@
         <div class="panel-body text-center">
             <ul>
 
-                <% for(var i = 3; i <= 18; i++) { %>
-                    <div class="col-md-4 col-lg-3">
-                        <div class="well">
-                            <h2><%= i %>. emelet</h2>
-                            <hr>
-
+                <% for(var i = 3; i <= 18; i++) { var red = false;%>
+                <div class="col-md-4 col-lg-3">
+                    <div class="well">
+                        <h2><%= i %>. emelet</h2>
+                        <hr>
+                        <div class="pulse" data-status="
                             <% groups.forEach(function(group) { %>
-
-                                <div class="pulse" data-status="
-                                    <% if(group.doNotDisturb == true) { %> red
-                                    <% } else{ %>
-                                        green
+                                    <% if(group.room == i) { %> red = true;
                                     <% } %>
-                                ">
-                                    <div class="status">
-                                    </div>
-                                </div>
-                            <% }); %>
-
-                            <a href="tanulo/<%= i %>"  class="btn btn-default">Megnyitás</a>
+                            <% }); if(red){ %>red
+                            <% } else {%>green
+                            <% }       %>">
+                            <div class="status">
+                            </div>
                         </div>
 
+                        <a href="tanulo/<%= i %>" class="btn btn-default">Megnyitás</a>
+
                     </div>
+
+                </div>
 
                 <% } %>
             </ul>

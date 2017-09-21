@@ -53,6 +53,7 @@ router.post('/add', function(req, res, next) {
     if (!req.isAuthenticated()) { res.redirect('/'); }
     models.group.create({
         name: req.body.name,
+        subject: req.body.subject,
         description: req.body.description,
         startDate: req.body.start_date,
         endDate: req.body.end_date,
