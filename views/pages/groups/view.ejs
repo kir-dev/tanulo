@@ -13,7 +13,7 @@
                 <h3>Résztvevők</h3>
                 <ul class="list-group">
                     <% group.users.forEach(function (user) { %>
-                    <li class="list-group-item"><a href="felhasznalo/profil/<%= user.id %>"><%= user.name %></a></li>
+                    <li class="list-group-item"><a href="/felhasznalo/profil/<%= user.id %>"><%= user.name %></a></li>
                     <% }); %>
                 </ul>
             </div>

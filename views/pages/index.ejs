@@ -17,7 +17,7 @@
                       </div>
                     </div>
 
-                <form class="" action="csoport/join" method="post">
+                <form class="" action="/csoport/join" method="post">
                 <div class="table-container">
 
                   <table class="table table-filter">
@@ -30,7 +30,7 @@
                             <div class="media-body">
                               <span class="media-meta pull-right"><%= group.startDate %> - <%= group.endDate %></span>
                               <h4 class="title">
-                                <a href="csoport/nezet/<%= group.id %>"><%= group.name %></a>
+                                <a href="/csoport/nezet/<%= group.id %>"><%= group.name %></a>
                                 <span class="pull-right pagado">(Jövőbeli)</span>
                               </h4>
                               <p class="summary"><%= group.description %></p>
@@ -51,7 +51,7 @@
 
                 </form>
                 <div class="pull-right">
-                    <a href="csoport/uj" class="btn btn-success">Új csoport létrehozása</a>
+                    <a href="/csoport/uj" class="btn btn-success">Új csoport létrehozása</a>
                   </div>
               </div>
             </div>

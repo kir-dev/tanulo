@@ -4,12 +4,11 @@
   <title></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <base href="http://127.0.0.1:3000/">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 
-  <link rel="stylesheet" href="stylesheets/style.css"  title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/stylesheets/style.css"  title="no title" charset="utf-8">
 </head>
 
 <body>
@@ -46,27 +45,27 @@
             <div class="profile-usermenu">
               <ul class="nav">
                 <li class="<% if(active=='csoport'){ %> active <% } %>">
-                  <a href="csoport/lista">
+                  <a href="/csoport/lista">
                   <i class="glyphicon glyphicon-home"></i>
                   Kezdőlap </a>
                 </li>
                   <li class="<% if(active=='elozmenyek'){ %> active <% } %>">
-                  <a href="elozmenyek/lista">
+                  <a href="/elozmenyek/lista">
                   <i class="glyphicon glyphicon-calendar"></i>
                   Előzményeim </a>
                 </li>
                   <li class="<% if(active=='beallitasok'){ %> active <% } %>">
-                  <a href="beallitasok/profil">
+                  <a href="/beallitasok/profil">
                   <i class="glyphicon glyphicon-user"></i>
                   Beállítások </a>
                 </li>
                 <li>
-                  <a href="auth/logout">
+                  <a href="/auth/logout">
                   <i class="glyphicon glyphicon-log-out"></i>
                   Kijelentkezés </a>
                 </li>
                   <li class="<% if(active=='help'){ %> active <% } %>">
-                  <a href="help/sugo">
+                  <a href="/help/sugo">
                   <i class="glyphicon glyphicon-question-sign"></i>
                   Sugó </a>
                 </li>
