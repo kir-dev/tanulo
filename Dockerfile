@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package.json .
 COPY package-lock.json .
-COPY .env.example .env
+COPY .env.development .env
 
 RUN npm install
 
