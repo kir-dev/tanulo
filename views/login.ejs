@@ -58,19 +58,17 @@
     <div class="panel panel-default">
         <div class="panel-body text-center">
             <ul>
-
                 <% for(var i = 3; i <= 18; i++) { var red = false;%>
+                <% groups.forEach(function(group) { %>
+                    <% if(group.room == i) {
+                        red = true;
+                     } %>
+                <% }); %>
                 <div class="col-md-4 col-lg-3">
                     <div class="well">
                         <h2><%= i %>. emelet</h2>
                         <hr>
-                        <div class="pulse" data-status="
-                            <% groups.forEach(function(group) { %>
-                                    <% if(group.room == i) { %> red = true;
-                                    <% } %>
-                            <% }); if(red){ %>red
-                            <% } else {%>green
-                            <% }       %>">
+                        <div class="pulse" data-status="<% if(red){ %>red<% } else {%>green<% }%>">
                             <div class="status">
                             </div>
                         </div>
