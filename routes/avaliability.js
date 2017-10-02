@@ -5,7 +5,7 @@ var getAvaliableRooms = require('../middleware/avaliability/getAvaliableRooms');
 var passport = require('passport');
 
 router.get('/', getAvaliableRooms(models), function (req, res, next) {
-        res.render('login', {userData: req.user, groups: req.groups, active: req.active});
+        res.render('login', {userData: req.user, groups: req.groups});
 });
 
 module.exports = router;

@@ -4,7 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-require('dotenv').config()
+var engine = require('ejs-locals');
+require('dotenv').config();
 
 var authorizationRoutes = require('./routes/auth');
 var avaliability = require('./routes/avaliability');
@@ -24,6 +25,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -67,6 +69,13 @@ passport.use(new OAuth2Strategy({
     }));
 
 
+app.use(function (req, res, next) {
+  res.locals.logged_in = req.isAuthenticated();
+  res.locals.active = req.path.split('/')[1];
+  console.log(res.locals.active);
+  next();
+});
+
 passport.serializeUser(function (user, done) {
     done(null, user);
 });
@@ -75,12 +84,7 @@ passport.deserializeUser(function (user, done) {
     done(null, user);
 });
 
-
 //ROUTING
-app.use(function(req, res, next){
-    req.active = req.path.split('/')[1] // [0] will be empty since routes start with '/'
-    next();
-});
 app.use('/auth', authorizationRoutes);
 app.use('/csoport', group);
 app.use('/help', help);

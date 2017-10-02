@@ -1,74 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title></title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<% layout('/layout/main') -%>
 
-    <link rel="stylesheet" href="stylesheets/style.css" title="no title" charset="utf-8">
-</head>
-
-<body>
-<div class="container">
-    <hr>
-    <div class="row">
-        <div class="col-sm-6">
-            <h1>TanuloSCH</h1>
-        </div>
-        <div class="col-sm-6">
-            <form class="pull-right" action="/auth/login" method="POST">
-                <button type="submit" name="button" class="login btn btn-lg btn-primary">Bejelentkezés AuthSch fiókkal
-                </button>
-            </form>
-
-        </div>
-    </div>
-    <table class="table table-filter">
-        <tbody>
-        <% groups.forEach(function(group) { %>
-        <tr data-status="pagado">
-            <td>
-                <div class="ckbox">
-                    <input type="radio" name="<%= group.id %>" id="checkbox<%= group.id %>">
-                    <label for="checkbox<%= group.id %>"></label>
-                </div>
-            </td>
-            <td>
-                <div class="media">
-
-                    <div class="media-body">
-                        <span class="media-meta pull-right"><%= group.startDate %> - <%= group.endDate %></span>
-                        <h4 class="title">
-                            <%= group.name %>
-                            <span class="pull-right pagado">(Jövőbeli)</span>
-                        </h4>
-                        <p class="summary"><%= group.description %></p>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        <% }); %>
-
-        </tbody>
-    </table>
-    <hr>
+<div class="col-lg-10 col-md-9">
     <div class="panel panel-default">
-        <div class="panel-body text-center">
+        <div class="panel-body">
+            <h2>Tanuló szobák</h2>
+            <hr>
             <ul>
-                <% for(var i = 3; i <= 18; i++) { var red = false;%>
+                <% for(var i = 3; i <= 18; i++) { var red = false; %>
                 <% groups.forEach(function(group) { %>
-                    <% if(group.room == i) {
-                        red = true;
-                     } %>
+                <% if (group.room == i) {
+                    red = true;
+                } %>
                 <% }); %>
-                <div class="col-md-4 col-lg-3">
+                <div class="col-md-4 col-lg-4 text-center">
                     <div class="well">
                         <h2><%= i %>. emelet</h2>
                         <hr>
-                        <div class="pulse" data-status="<% if(red){ %>red<% } else {%>green<% }%>">
+                        <div class="pulse" data-status="<% if(red){ %>red<% } else { %>green<% } %>">
                             <div class="status">
                             </div>
                         </div>
@@ -83,7 +31,7 @@
             </ul>
         </div>
     </div>
-
+</div>
 </div>
 </body>
 </html>

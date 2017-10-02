@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link href="../fullcalendar/fullcalendar.css" rel="stylesheet">
-    <script src="../fullcalendar/moment.min.js"></script>
-    <script src="../fullcalendar/jquery.min.js"></script>
-    <script src="../fullcalendar/fullcalendar.min.js"></script>
-</head>
-<body>
-<div id='calendar'></div>
-</body>
+<% layout('/layout/main') -%>
 
-
+<div class="col-lg-10 col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-body text-center">
+            <section class="content">
+                <div id='calendar'></div>
+            </section>
+        </div>
+    </div>
+</div>
 <script>
     $(document).ready(function () {
 
@@ -26,6 +24,8 @@
             success: function (response) {
                 console.log('Server response: ' + response);
                 $('#calendar').fullCalendar({
+                    locale: 'hu',
+                    defaultView: 'agendaWeek',
                     editable: false,
                     header: {
                         right: 'agendaDay agendaWeek month'
@@ -37,4 +37,3 @@
         });
     });
 </script>
-</html>

@@ -9,7 +9,7 @@ router.get('/profil/:id', getUser(models), function(req, res, next) {
 
     if (!req.isAuthenticated()) { res.redirect('/'); }
 
-    res.render('pages/users/view', {userData: req.user, user: req.userProfile, active: req.active});
+    res.render('pages/users/view', {userData: req.user, user: req.userProfile});
 });
 
 module.exports = router;

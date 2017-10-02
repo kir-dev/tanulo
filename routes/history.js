@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
     if (!req.isAuthenticated()) { res.redirect('/'); }
 
-    res.render('pages/history', {userData: req.user, active: req.active});
+    res.render('pages/history', {userData: req.user});
 
 });
 

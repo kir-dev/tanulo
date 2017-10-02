@@ -5,10 +5,10 @@ var getGroups = require('../middleware/group/getGroups');
 var getGroup = require('../middleware/group/getGroup');
 var passport = require('passport');
 
-passport.authenticate('oauth2', {failureRedirect: '/auth/example'}),
+passport.authenticate('oauth2', {failureRedirect: '/auth/example'});
 router.get('/lista', getGroups(models), function (req, res, next) {
 
-    res.render('pages/index', {userData: req.user, groups: req.group, active: req.active});
+    res.render('pages/index', {userData: req.user, groups: req.group});
 });
 
 router.post('/csatlakozas', function (req, res, next) {
@@ -37,7 +37,7 @@ router.get('/nezet/:id', getGroup(models), function(req, res, next) {
 
   if (!req.isAuthenticated()) { res.redirect('/'); }
 
-        res.render('pages/groups/view', {userData: req.user, group: req.group, active: req.active});
+        res.render('pages/groups/view', {userData: req.user, group: req.group});
 });
 
 router.get('/uj', function(req, res, next) {
@@ -45,7 +45,7 @@ router.get('/uj', function(req, res, next) {
 
     var results = [];
 
-          res.render('pages/groups/new', {userData: req.user, subjects: results, active: req.active});
+          res.render('pages/groups/new', {userData: req.user, subjects: results});
 
 });
 

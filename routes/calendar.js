@@ -12,7 +12,7 @@ router.use(function(req, res, next) {
 });
 
 router.get('/:id',  function (req, res, next) {
-    res.render('pages/calendar');
+    res.render('pages/calendar', {userData: req.user});
 });
 
 router.get('/:id/event', getEventsForRoom(models), function (req, res, next) {

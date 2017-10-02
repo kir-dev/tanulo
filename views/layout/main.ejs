@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" title="no title" charset="utf-8">
+    <link href="../fullcalendar/fullcalendar.css" rel="stylesheet">
+    <script src="../fullcalendar/moment.min.js"></script>
+    <script src="../fullcalendar/jquery.min.js"></script>
+    <script src="../fullcalendar/fullcalendar.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="col-sm-6">
+        <h1>TanulóSCH</h1>
+        <p class="lead">Közös tanuláshoz partnerkeresést segítő alkalmazás.</p>
+    </div>
+    <% if(!logged_in) { %>
+    <div class="col-sm-6">
+        <hr>
+        <form class="pull-right" action="/auth/login" method="POST">
+            <button type="submit" name="button" class="login btn btn-lg btn-primary">Bejelentkezés AuthSch fiókkal
+            </button>
+        </form>
+    </div>
+    <% } %>
+</div>
+
+<div class="container">
+    <div class="row">
+        <section class="content">
+            <div class="col-lg-2 col-md-3">
+                <div class="profile-sidebar">
+                    <% if(logged_in) { %>
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="row">
+                        <div class="profile-userpic col-xs-offset-3 col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-0 col-md-12">
+                            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg"
+                                 class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            <%= userData.displayName %>
+                        </div>
+                        <div class="profile-usertitle-job">
+                            <%= userData.roomNumber %>
+                        </div>
+                    </div>
+                    <% } %>
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR MENU -->
+                    <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li class="<% if(!active){ %> active <% } %>">
+                            <a href="/">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Kezdőlap </a>
+                            </li>
+                            <li class="<% if(active == 'csoport'){ %> active <% } %>">
+                                <a href="/csoport/lista">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Csoportok </a>
+                            </li>
+
+                            <% if(logged_in) { %>
+                            <li class="<% if(active == 'elozmenyek'){ %> active <% } %>">
+                                <a href="/elozmenyek/lista">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                    Előzményeim </a>
+                            </li>
+                            <li class="<% if(active == 'beallitasok'){ %> active <% } %>">
+                                <a href="/beallitasok/profil">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Beállítások </a>
+                            </li>
+                            <li>
+                                <a href="/auth/logout">
+                                    <i class="glyphicon glyphicon-log-out"></i>
+                                    Kijelentkezés </a>
+                            </li>
+                            <li class="<% if(active == 'help'){ %> active <% } %>">
+                                <a href="/help/sugo">
+                                    <i class="glyphicon glyphicon-question-sign"></i>
+                                    Sugó </a>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+                <!-- END MENU -->
+            </div>
+
+            <%- body %>
+
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    $('.ckbox label').on('click', function () {
+                        if( !$(this).prev().attr( 'disabled') ){
+                            $('.table tr').removeClass('selected');
+                            $(this).parents('tr').addClass('selected');
+                        }
+                    });
+                    $('.btn-filter').on('click', function () {
+                        var $target = $(this).data('target');
+                        if ($target != 'all') {
+                            $('.table tr').css('display', 'none');
+                            $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+                        } else {
+                            $('.table tr').css('display', 'none').fadeIn('slow');
+                        }
+                    });
+                });
+            </script>
+            <div class="content-footer text-center">
+                <p>
+                    Tanuló © - 2017 <br>
+                    Powered By <a href="http://kir-dev.sch.bme.hu" target="_blank">Kir-dev</a>
+                </p>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>
