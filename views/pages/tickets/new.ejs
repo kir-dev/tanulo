@@ -1,0 +1,26 @@
+<% layout('../../layout/main') %>
+
+          <div class="col-lg-10 col-md-9">
+
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+
+              <h2>Új csoport</h2>
+              <form method="POST" action="uj">
+                <fieldset class="form-group">
+                  <label for="name">Tanuló száma</label>
+                    <input class="form-control input-lg" type="text" name="roomNumber" placeholder="3-18">
+                  </select>  
+                </fieldset>              
+                <fieldset class="form-group">
+                  <label for="comment">Leírás</label>
+                  <textarea class="form-control input-lg" rows="3" name="description"></textarea>
+                </fieldset>
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-success">Hibajegy felvétele</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+

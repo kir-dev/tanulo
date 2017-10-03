@@ -1,0 +1,42 @@
+<% layout('../../layout/main') %>
+
+          <div class="col-lg-10 col-md-9">
+
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                    <div class="pull-left"><h2>Hibajegyek</h2></div>
+                    
+
+               
+                <div class="table-container">
+
+                  <table class="table table-filter">
+                    <tbody>
+                      <% tickets.forEach(function(ticket) { %>
+                      <tr data-status="pagado">
+                        <td>
+                          <div class="media">
+                            
+                            <div class="media-body">
+                              <span class="media-meta pull-right"><%= ticket.createdAt %></span>
+                              <h4 class="title">
+                                <div><%= ticket.roomNumber %></div>
+                              </h4>
+                              <p class="summary"><%= ticket.description %></p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <% }); %>
+
+
+
+                    </tbody>
+                  </table>
+                </div>
+                <div class="pull-right">
+                    <a href="uj" class="btn btn-success">Új hibajegy felvétele</a>
+                </div>
+            </div>
+          </div>

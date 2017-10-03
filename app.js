@@ -15,6 +15,7 @@ var settings = require('./routes/settings');
 var history = require('./routes/history');
 var user = require('./routes/users');
 var calendar = require('./routes/calendar');
+var tickets = require('./routes/tickets');
 
 var passport = require('passport'),
     OAuth2Strategy = require('passport-oauth2');
@@ -93,7 +94,7 @@ app.use('/elozmenyek/lista', history);
 app.use('/', avaliability);
 app.use('/felhasznalo', user);
 app.use('/tanulo', calendar);
-
+app.use('/hibajegyek', tickets);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
