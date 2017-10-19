@@ -4,11 +4,12 @@ var models = require('../models');
 var getGroups = require('../middleware/group/getGroups');
 var getGroup = require('../middleware/group/getGroup');
 var passport = require('passport');
+var moment = require('moment');
 
 passport.authenticate('oauth2', {failureRedirect: '/auth/example'});
 router.get('/lista', getGroups(models), function (req, res, next) {
 
-    res.render('pages/index', {userData: req.user, groups: req.group});
+    res.render('pages/index', {userData: req.user, groups: req.group, moment: moment});
 });
 
 router.post('/csatlakozas', function (req, res, next) {
@@ -45,7 +46,7 @@ router.get('/uj', function(req, res, next) {
 
     var results = [];
 
-          res.render('pages/groups/new', {userData: req.user, subjects: results});
+          res.render('pages/groups/new', {userData: req.user});
 
 });
 

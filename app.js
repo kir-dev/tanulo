@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var engine = require('ejs-locals');
+var moment = require('moment');
 require('dotenv').config();
 
 var authorizationRoutes = require('./routes/auth');

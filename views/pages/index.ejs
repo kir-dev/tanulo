@@ -26,8 +26,8 @@
                                 <div class="media">
 
                                     <div class="media-body">
-                                        <span class="media-meta pull-right"><%= group.startDate %>
-                                            - <%= group.endDate %></span>
+                                        <span class="media-meta pull-right"><%= moment(group.startDate).format( 'MMM-DD-YYYY HH:MM') %>
+                                            - <%= moment(group.endDate).format( 'MMM-DD-YYYY HH:MM') %></span>
                                         <h4 class="title">
                                             <a href="/csoport/nezet/<%= group.id %>"><%= group.name %></a>
                                             <span class="pull-right pagado">(Jövőbeli)</span>
@@ -41,9 +41,6 @@
 
                         </tbody>
                     </table>
-                </div>
-                <div class="pull-left">
-                    <button type="submit" class="btn btn-primary">Csatlakozok a csoporthoz</button>
                 </div>
 
             </form>
