@@ -6,9 +6,15 @@
         <div class="panel-body">
             <h2><%= group.name %></h2>
             <div class="col-md-6">
-                <span class="text-muted"><%= group.endDate %> - <%= group.endDate %></span>
+                <span class="text-muted"><%=  moment(group.startDate).format( 'MMM-DD-YYYY HH:MM') %> - <%=  moment(group.endDate).format( 'MMM-DD-YYYY HH:MM') %></span>
                 <p class="summary"><%= group.description %></p>
             </div>
+            <form method="post" action="/csoport/csatlakozas/<%= group.id %>">
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-success">Csatlakozok a csoporthoz</button>
+                </div>
+            </form>>
+
             <div class="col-md-6">
                 <h3>Résztvevők</h3>
                 <ul class="list-group">

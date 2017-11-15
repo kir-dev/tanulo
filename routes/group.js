@@ -3,6 +3,7 @@ var router = express.Router();
 var models = require('../models');
 var getGroups = require('../middleware/group/getGroups');
 var getGroup = require('../middleware/group/getGroup');
+var joinGroup = require('../middleware/group/joinGroup');
 var passport = require('passport');
 var moment = require('moment');
 
@@ -12,25 +13,9 @@ router.get('/lista', getGroups(models), function (req, res, next) {
     res.render('pages/index', {userData: req.user, groups: req.group, moment: moment});
 });
 
-router.post('/csatlakozas', function (req, res, next) {
-
-    Object.keys(req.body).map(function(objectKey, index) {
-        var value = req.body[objectKey];
-        if(value=='on') {
-            models.user.findAll({
-                where: {authschId: req.user.internal_id}
-            }).then(function (user) {
-                models.group.findById(objectKey)
-                    .then(function (group) {
-                        group.addUser(user);
-                    });
-            });
-        }
-
-        //TODO join group
-
-        res.redirect("/csoport/lista");
-    });
+router.post('/csatlakozas/:id', joinGroup(models), function (req, res, next) {
+    //TODO sikeres csatlakozas nezet
+    res.render('pages/index', {userData: req.user, groups: req.group, moment: moment});
 
 });
 
@@ -38,13 +23,11 @@ router.get('/nezet/:id', getGroup(models), function(req, res, next) {
 
   if (!req.isAuthenticated()) { res.redirect('/'); }
 
-        res.render('pages/groups/view', {userData: req.user, group: req.group});
+        res.render('pages/groups/view', {userData: req.user, group: req.group, moment: moment});
 });
 
 router.get('/uj', function(req, res, next) {
     if (!req.isAuthenticated()) { res.redirect('/'); }
-
-    var results = [];
 
           res.render('pages/groups/new', {userData: req.user});
 
