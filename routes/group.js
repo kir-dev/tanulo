@@ -13,7 +13,7 @@ router.get('/lista', getGroups(models), function (req, res, next) {
     res.render('pages/index', {userData: req.user, groups: req.group, moment: moment});
 });
 
-router.post('/csatlakozas/:id', joinGroup(models), function (req, res, next) {
+router.post('/csatlakozas/:id', joinGroup(models), getGroups(models), function (req, res, next) {
     //TODO sikeres csatlakozas nezet
     res.render('pages/index', {userData: req.user, groups: req.group, moment: moment});
 

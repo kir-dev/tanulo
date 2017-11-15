@@ -12,9 +12,9 @@ module.exports = function(models) {
             models.group.findById(req.params.id)
                 .then(function (group) {
                     group.addUser(user);
-
+                    return next();
                 });
-            return next();
+
         });
 
     };
