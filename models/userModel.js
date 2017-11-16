@@ -7,14 +7,15 @@ module.exports = function (sequelize, DataTypes) {
             name: DataTypes.STRING,
             authschId: DataTypes.STRING,
             email: DataTypes.STRING,
-            roomNumber: DataTypes.INTEGER,
-            admin: DataTypes.BOOLEAN
+            roomNumber: DataTypes.INTEGER
         },
         {
             classMethods: {
                 associate: function (models) {
                     User.belongsToMany(models.group, {through: 'userGroup'});
+                    User.belongsTo(models.userRole, {as: 'role'});
                 }
+
             }
         });
 
