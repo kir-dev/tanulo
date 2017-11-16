@@ -1,18 +1,18 @@
-module.exports = function(models) {
-
+var getTicket = function (models) {
+    var getAllTicket = function () {
+        return models.ticket.findAll({});
+    };
 
     return function (req, res, next) {
-
         if (!req.isAuthenticated()) {
             res.redirect('/');
         }
 
-        models.ticket.findAll({}).then(function (tickets) {
-
+        getAllTicket().then(function (tickets) {
             req.tickets = tickets;
-
             return next();
-           
         });
     };
-}
+};
+
+module.exports = getTicket;

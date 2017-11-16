@@ -11,7 +11,6 @@ require('dotenv').config();
 var authorizationRoutes = require('./routes/auth');
 var avaliability = require('./routes/avaliability');
 var group = require('./routes/group');
-var help = require('./routes/help');
 var settings = require('./routes/settings');
 var history = require('./routes/history');
 var user = require('./routes/users');
@@ -90,14 +89,13 @@ passport.deserializeUser(function (user, done) {
 });
 
 //ROUTING
-app.use('/auth', authorizationRoutes);
-app.use('/csoport', group);
-app.use('/help', help);
-app.use('/beallitasok/profil', settings);
-app.use('/elozmenyek/lista', history);
 app.use('/', avaliability);
-app.use('/felhasznalo', user);
+app.use('/auth', authorizationRoutes);
 app.use('/tanulo', calendar);
+app.use('/csoportok', group);
+app.use('/felhasznalo', user);
+app.use('/beallitasok', settings);
+app.use('/elozmenyek', history);
 app.use('/hibajegyek', tickets);
 
 // error handlers

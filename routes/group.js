@@ -14,18 +14,10 @@ passport.authenticate('oauth2', {
     failureRedirect: '/auth/example'
 });
 
-router.get('/lista', getGroups(models), function (req, res, next) {
+router.get('/', getGroups(models), function (req, res, next) {
     res.render('pages/index', {
         userData: req.user,
         groups: req.group,
-        moment: moment
-    });
-});
-
-router.get('/nezet/:id', getGroup(models), function (req, res, next) {
-    res.render('pages/groups/view', {
-        userData: req.user,
-        group: req.group,
         moment: moment
     });
 });
@@ -34,16 +26,26 @@ router.get('/uj', function (req, res, next) {
     if (!req.isAuthenticated()) {
         res.redirect('/');
     }
-    
+
     res.render('pages/groups/new', {
         userData: req.user
     });
 });
 
-router.post('/add', addGroup(models));
+router.post('/uj', addGroup(models), function (req, res, next) {
+    res.redirect('/csoportok');
+});
 
-router.post('/csatlakozas/:id', joinGroup(models, function (req, res, next) {
-    res.redirect('/csoport/nezet/' + req.params.id);
-}));
+router.get('/:id', getGroup(models), function (req, res, next) {
+    res.render('pages/groups/view', {
+        userData: req.user,
+        group: req.group,
+        moment: moment
+    });
+});
+
+router.post('/:id/csatlakozas', joinGroup(models), function (req, res, next) {
+    res.redirect('/csoportok/' + req.params.id);
+});
 
 module.exports = router;

@@ -66,25 +66,25 @@
                                 <i class="glyphicon glyphicon-home"></i>
                                 Kezdőlap </a>
                             </li>
-                            <li class="<% if(active == 'csoport'){ %> active <% } %>">
-                                <a href="/csoport/lista">
+                            <li class="<% if(active === 'csoportok'){ %> active <% } %>">
+                                <a href="/csoportok">
                                     <i class="glyphicon glyphicon-user"></i>
                                     Csoportok </a>
                             </li>
 
                             <% if(logged_in) { %>
-                            <li class="<% if(active == 'elozmenyek'){ %> active <% } %>">
-                                <a href="/elozmenyek/lista">
+                            <li class="<% if(active === 'elozmenyek'){ %> active <% } %>">
+                                <a href="/elozmenyek">
                                     <i class="glyphicon glyphicon-calendar"></i>
                                     Előzményeim </a>
                             </li>
-                            <li class="<% if(active == 'hibajegyek'){ %> active <% } %>">
-                                <a href="/hibajegyek/lista">
+                            <li class="<% if(active === 'hibajegyek'){ %> active <% } %>">
+                                <a href="/hibajegyek">
                                     <i class="glyphicon glyphicon-calendar"></i>
                                     Hibajegyek </a>
                             </li>
-                            <li class="<% if(active == 'beallitasok'){ %> active <% } %>">
-                                <a href="/beallitasok/profil">
+                            <li class="<% if(active === 'beallitasok'){ %> active <% } %>">
+                                <a href="/beallitasok">
                                     <i class="glyphicon glyphicon-user"></i>
                                     Beállítások </a>
                             </li>
@@ -92,11 +92,6 @@
                                 <a href="/auth/logout">
                                     <i class="glyphicon glyphicon-log-out"></i>
                                     Kijelentkezés </a>
-                            </li>
-                            <li class="<% if(active == 'help'){ %> active <% } %>">
-                                <a href="/help/sugo">
-                                    <i class="glyphicon glyphicon-question-sign"></i>
-                                    Sugó </a>
                             </li>
                             <% } %>
                         </ul>
