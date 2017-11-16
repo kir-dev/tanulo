@@ -103,9 +103,10 @@ app.use('/hibajegyek', tickets);
 // error handlers
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    console.log("404 happened here tesa!");
     var err = new Error('Not Found');
     err.status = 404;
+    console.log(err.message);
+    console.log(err.stack);
     next(err);
 });
 
@@ -121,10 +122,9 @@ if (app.get('env') === 'development') {
     });
 }
 
-process.on("uncaughtException", function (err) {
-    console.log("UncaughtException:");
-    console.log(err);
-    console.log(err.stack);
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
 
 module.exports = app;

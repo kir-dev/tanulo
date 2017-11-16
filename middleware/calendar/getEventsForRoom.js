@@ -1,10 +1,6 @@
 module.exports = function(models) {
 
     return function (req, res, next) {
-
-
-
-
         models.group.findAll({
             where: {
                 room : req.params.id
