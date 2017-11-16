@@ -29,7 +29,7 @@
                                         <span class="media-meta pull-right"><%= moment(group.startDate).format( 'MMM-DD-YYYY HH:MM') %>
                                             - <%= moment(group.endDate).format( 'MMM-DD-YYYY HH:MM') %></span>
                                         <h4 class="title">
-                                            <a href="/csoport/nezet/<%= group.id %>"><%= group.name %></a>
+                                            <a href="/csoportok/<%= group.id %>"><%= group.name %></a>
                                             <span class="pull-right pagado">(Jövőbeli)</span>
                                         </h4>
                                         <p class="summary"><%= group.description %></p>
@@ -45,7 +45,7 @@
 
             </form>
             <div class="pull-right">
-                <a href="/csoport/uj" class="btn btn-success">Új csoport létrehozása</a>
+                <a href="/csoportok/uj" class="btn btn-success">Új csoport létrehozása</a>
             </div>
         </div>
     </div>

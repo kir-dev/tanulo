@@ -16,7 +16,6 @@ var addGroup = function (models) {
         }
 
         createGroup(req.body).then(function () {
-            res.redirect('/csoport/lista');
             return next();
         });
     };

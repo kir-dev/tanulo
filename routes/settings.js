@@ -4,14 +4,18 @@ var router = express.Router();
 var passport = require('passport');
 var pg = require('pg');
 
-passport.authenticate('oauth2', {failureRedirect: '/auth/example'}),
-router.get('/', function(req, res, next) {
-
-    if (!req.isAuthenticated()) { res.redirect('/'); }
-    res.render('pages/settings', {userData: req.user});
-
+passport.authenticate('oauth2', {
+    failureRedirect: '/auth/example'
 });
 
+router.get('/', function (req, res, next) {
+    if (!req.isAuthenticated()) {
+        res.redirect('/');
+    }
 
+    res.render('pages/settings', {
+        userData: req.user
+    });
+});
 
 module.exports = router;

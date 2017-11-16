@@ -9,7 +9,7 @@
                 <span class="text-muted"><%=  moment(group.startDate).format( 'MMM-DD-YYYY HH:MM') %> - <%=  moment(group.endDate).format( 'MMM-DD-YYYY HH:MM') %></span>
                 <p class="summary"><%= group.description %></p>
             </div>
-            <form method="post" action="/csoport/csatlakozas/<%= group.id %>">
+            <form method="post" action="/csoportok/<%= group.id %>/csatlakozas">
                 <div class="pull-right">
                     <button type="submit" class="btn btn-success">Csatlakozok a csoporthoz</button>
                 </div>

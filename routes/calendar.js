@@ -5,14 +5,16 @@ var getEventsForRoom = require('../middleware/calendar/getEventsForRoom');
 
 var passport = require('passport');
 
-router.use(function(req, res, next) {
+router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
-router.get('/:id',  function (req, res, next) {
-    res.render('pages/calendar', {userData: req.user});
+router.get('/:id', function (req, res, next) {
+    res.render('pages/calendar', {
+        userData: req.user
+    });
 });
 
 router.get('/:id/event', getEventsForRoom(models), function (req, res, next) {
