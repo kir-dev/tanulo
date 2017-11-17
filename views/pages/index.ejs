@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <form class="" action="/csoport/join" method="post">
+
                 <div class="table-container">
 
                     <table class="table table-filter">
@@ -27,8 +27,8 @@
 
                                     <div class="media-body">
 
-                                        <span class="media-meta pull-right"><%= moment(group.startDate).format( 'MMM-DD-YYYY HH:MM') %>
-                                            - <%= moment(group.endDate).format( 'MMM-DD-YYYY HH:MM') %></span>
+                                        <span class="media-meta pull-right"><%= moment(group.startDate).format( 'LLLL') %>
+                                            - <%= moment(group.endDate).format( 'LLLL') %></span>
 
                                         <h4 class="title">
                                             <a href="/csoportok/<%= group.id %>"><%= group.name %></a>
@@ -45,7 +45,7 @@
                     </table>
                 </div>
 
-            </form>
+
             <div class="pull-right">
                 <a href="/csoportok/uj" class="btn btn-success">Új csoport létrehozása</a>
             </div>

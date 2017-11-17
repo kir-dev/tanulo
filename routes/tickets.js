@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var moment = require('moment');
 
 var models = require('../models');
 var getTickets = require('../middleware/ticket/getTickets');
@@ -14,7 +15,8 @@ router.get('/', getTickets(models), function (req, res, next) {
     res.render('pages/tickets/view', {
         userData: req.user,
         tickets: req.tickets,
-        active: req.active
+        active: req.active,
+        moment: moment
     });
 });
 

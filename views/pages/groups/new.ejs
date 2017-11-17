@@ -19,7 +19,7 @@
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="start_date">Kezdés</label>
-                        <input class="form-control input-lg" type="datetime-local" name="start_date" value="<% if(start){ %>moment(start).format( 'MMM-DD-YYYY HH:MM')<% } else { %> <% } %>" required>
+                        <input class="form-control input-lg" type="datetime-local" name="start_date" value="<% if(start){ %><%=moment(start).format( 'MMM-DD-YYYY HH:MM')%><% } else { %> <% } %>" required>
                         </select>
                     </fieldset>
                     <fieldset class="form-group">

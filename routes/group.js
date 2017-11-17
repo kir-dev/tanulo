@@ -30,7 +30,8 @@ router.get('/uj', function (req, res, next) {
     res.render('pages/groups/new', {
         userData: req.user,
         start: req.query.start,
-        end: req.query.end
+        end: req.query.end,
+        moment: moment
     });
 });
 

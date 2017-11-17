@@ -19,7 +19,7 @@
 
                       <div class="media-body">
                         <span class="media-meta pull-right">
-                          <%= ticket.createdAt %>
+                         <%=  moment(ticket.createdAt).format( 'LLLL') %>
                         </span>
                         <h4 class="title">
                           <div>

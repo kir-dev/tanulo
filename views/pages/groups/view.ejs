@@ -6,7 +6,7 @@
         <div class="panel-body">
             <h2><%= group.name %></h2>
             <div class="col-md-6">
-                <span class="text-muted"><%=  moment(group.startDate).format( 'MMM-DD-YYYY HH:MM') %> - <%=  moment(group.endDate).format( 'MMM-DD-YYYY HH:MM') %></span>
+                <span class="text-muted"><%=  moment(group.startDate).format( 'LLLL') %> - <%=  moment(group.endDate).format( 'LLLL') %></span>
                 <p class="summary"><%= group.description %></p>
             </div>
             <% if(group.doNotDisturb){ %>
