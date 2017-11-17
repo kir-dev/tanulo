@@ -121,8 +121,11 @@ if (app.get('env') === 'development') {
 }
 
 app.use(function (err, req, res, next) {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: err
+    });
 });
 
 module.exports = app;

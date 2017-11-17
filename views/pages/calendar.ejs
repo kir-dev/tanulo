@@ -1,39 +1,47 @@
 <% layout('../layout/main') -%>
 
-<div class="col-lg-10 col-md-9">
-    <div class="panel panel-default">
-        <div class="panel-body text-center">
-            <section class="content">
-                <div id='calendar'></div>
-            </section>
+    <div class="col-lg-10 col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body text-center">
+                <section class="content">
+                    <div id='calendar'></div>
+                </section>
+            </div>
         </div>
     </div>
-</div>
-<script>
-    $(document).ready(function () {
 
-        var roomNumber = window.location.pathname.substr(window.location.pathname.length - 1);
+    <script>
+        $(document).ready(function () {
+            var roomNumber = window.location.pathname.substr(window.location.pathname.length - 1);
 
-        $.ajax({
-            url: "http://localhost:3000/tanulo/" + roomNumber + "/event",
-            type: "GET",
-            data: {
-                id: roomNumber
-            },
-            dataType: "json",
-            success: function (response) {
-                console.log('Server response: ' + response);
-                $('#calendar').fullCalendar({
-                    locale: 'hu',
-                    defaultView: 'agendaWeek',
-                    editable: false,
-                    header: {
-                        right: 'agendaDay agendaWeek month'
-                    },
-                    events: response
-                })
-            }
-
+            $.ajax({
+                url: "http://localhost:3000/tanulo/" + roomNumber + "/event",
+                type: "GET",
+                data: {
+                    id: roomNumber
+                },
+                dataType: "json",
+                success: function (response) {
+                    console.log('Server response: ' + response);
+                    $('#calendar').fullCalendar({
+                        locale: 'hu',
+                        firstDay: 1,
+                        defaultView: 'agendaWeek',
+                        editable: false,
+                        header: {
+                            right: 'agendaDay agendaWeek month'
+                        },
+                        events: response,
+                        eventClick: function (calEvent, jsEvent, view) {
+                            location.href = ('/csoportok/' + calEvent.groupId);
+                        },
+                        selectable: true,
+                        selectHelper: true,
+                        select: function (start, end) {
+                            location.href = '/csoportok/uj?start=' + start + '&end=' + end;
+                        },
+                    })
+                }
+            });
         });
-    });
-</script>
+    </script>

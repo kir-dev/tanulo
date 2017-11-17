@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 module.exports = function (sequelize, DataTypes) {
     var Group = sequelize.define(
-        "group",
+        'group',
         {
             name: DataTypes.STRING,
             subject: DataTypes.STRING,

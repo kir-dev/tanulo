@@ -1,13 +1,11 @@
-"use strict";
+'use strict';
 
 module.exports = function (sequelize, DataTypes) {
     var UserRole = sequelize.define(
-        "userRole",
+        'userRole',
         {
             name: DataTypes.STRING
-
         });
-
 
     return UserRole;
 };
