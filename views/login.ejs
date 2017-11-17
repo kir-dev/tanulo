@@ -6,17 +6,18 @@
             <h2>Tanuló szobák</h2>
             <hr>
             <ul>
-                <% for(var i = 3; i <= 18; i++) { var red = false; %>
+                <% for(var i = 3; i <= 18; i++) { var color = "green"; %>
                 <% groups.forEach(function(group) { %>
-                <% if (group.room == i) {
-                    red = true;
-                } %>
+                <% if (group.room == i && !group.doNotDisturb) {
+                    color = "orange";
+
+                } else if(group.room == i && group.doNotDisturb){ color = "red";}%>
                 <% }); %>
                 <div class="col-md-4 col-lg-4 text-center">
                     <div class="well">
                         <h2><%= i %>. emelet</h2>
                         <hr>
-                        <div class="pulse" data-status="<% if(red){ %>red<% } else { %>green<% } %>">
+                        <div class="pulse" data-status="<% if(color=="red"){ %>red<% } else if(color == "green"){ %>green<% } else{ %>yellow<%}%>">
                             <div class="status">
                             </div>
                         </div>

@@ -26,12 +26,14 @@
                                 <div class="media">
 
                                     <div class="media-body">
+
                                         <span class="media-meta pull-right"><%= moment(group.startDate).format( 'MMM-DD-YYYY HH:MM') %>
                                             - <%= moment(group.endDate).format( 'MMM-DD-YYYY HH:MM') %></span>
+
                                         <h4 class="title">
                                             <a href="/csoportok/<%= group.id %>"><%= group.name %></a>
-                                            <span class="pull-right pagado">(Jövőbeli)</span>
                                         </h4>
+                                        <span class="media-meta pull-right">Tanuló:<%= group.room%></span>
                                         <p class="summary"><%= group.description %></p>
                                     </div>
                                 </div>
