@@ -21,6 +21,7 @@ var joinGroup = function (models) {
 
         Promise.all([userPromise, groupPromise]).then(function (result) {
             let [user, group] = result;
+            if(group.doNotDisturb){return next();}
             group.addUser(user);
             return next();
         });

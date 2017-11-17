@@ -9,12 +9,17 @@
                 <span class="text-muted"><%=  moment(group.startDate).format( 'MMM-DD-YYYY HH:MM') %> - <%=  moment(group.endDate).format( 'MMM-DD-YYYY HH:MM') %></span>
                 <p class="summary"><%= group.description %></p>
             </div>
+            <% if(group.doNotDisturb){ %>
+            <div class="pull-right">
+            <p class="alert">A csoport létrehozója nem szeretné, ha mások csatlakoznának.</p>
+            </div>
+            <% } else{ %>
             <form method="post" action="/csoportok/<%= group.id %>/csatlakozas">
                 <div class="pull-right">
                     <button type="submit" class="btn btn-success">Csatlakozok a csoporthoz</button>
                 </div>
             </form>>
-
+            <% } %>
             <div class="col-md-6">
                 <h3>Résztvevők</h3>
                 <ul class="list-group">

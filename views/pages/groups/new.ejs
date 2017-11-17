@@ -9,7 +9,7 @@
                 <form method="POST" action="/csoportok/uj">
                     <fieldset class="form-group">
                         <label for="name">Név</label>
-                        <input class="form-control input-lg" type="text" name="name" placeholder="Diffegyenletek">
+                        <input class="form-control input-lg" type="text" name="name" placeholder="Diffegyenletek" required>
                         </select>
                     </fieldset>
                     <fieldset class="form-group">
@@ -19,19 +19,19 @@
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="start_date">Kezdés</label>
-                        <input class="form-control input-lg" type="datetime-local" name="start_date" value="<% if(start){ %>start<% } else { %> <% } %>">
+                        <input class="form-control input-lg" type="datetime-local" name="start_date" value="<% if(start){ %>moment(start).format( 'MMM-DD-YYYY HH:MM')<% } else { %> <% } %>" required>
                         </select>
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="end_date">Befejezés</label>
-                        <input class="form-control input-lg" type="datetime-local" name="end_date"  value="<% if(end){ %>end<% } else { %> <% } %>">
+                        <input class="form-control input-lg" type="datetime-local" name="end_date"  value="<% if(end){ %>moment(end).format( 'MMM-DD-YYYY HH:MM')<% } else { %> <% } %>">
                         </select>
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="room">Tanuló</label>
                         <select id="room" name="room" size="1">
                             <% for(var i = 3; i <= 18;i++) { %>
-                                <option value=< %=i %>>
+                                <option value=<%=i %>>
                                     <%= i %>
                                 </option>
                                 <% } %>
@@ -41,6 +41,7 @@
                         <label for="comment">Leírás</label>
                         <textarea class="form-control input-lg" rows="3" name="description"></textarea>
                     </fieldset>
+                    <input type="checkbox" name="doNotDisturb" value="true"> Nem szeretném, hogy mások csatlakozzanak.<br>
                     <div class="pull-right">
                         <button type="submit" class="btn btn-success">Új csoport létrehozása</button>
                     </div>

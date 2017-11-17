@@ -1,12 +1,17 @@
 var addGroup = function (models) {
     var createGroup = function (groupDTO) {
+        let dnd = false;
+        if(groupDTO.doNotDisturb){
+            dnd = true;
+        }
         return models.group.create({
             name: groupDTO.name,
             subject: groupDTO.subject,
             description: groupDTO.description,
             startDate: groupDTO.start_date,
             endDate: groupDTO.end_date,
-            room: groupDTO.room
+            room: groupDTO.room,
+            doNotDisturb: dnd
         });
     };
 
