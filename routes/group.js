@@ -24,8 +24,9 @@ router.get('/', getGroups(models), function (req, res) {
 router.get('/uj', function (req, res) {
     res.render('pages/groups/new', {
         userData: req.user,
-        start: req.query.start,
-        end: req.query.end,
+        start: Number(req.query.start),
+        end: Number(req.query.end),
+        roomId: req.query.roomId,
         moment: moment
     });
 });

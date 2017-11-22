@@ -10,28 +10,24 @@
                     <fieldset class="form-group">
                         <label for="name">Név</label>
                         <input class="form-control input-lg" type="text" name="name" id="name" placeholder="Diffegyenletek" required>
-                        </select>
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="subject">Tárgy</label>
                         <input class="form-control input-lg" type="text" id="subject" name="subject" placeholder="Analízis I.">
-                        </select>
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="start_date">Kezdés</label>
-                        <input class="form-control input-lg" type="datetime-local" id="start_date" name="start_date" value="<% if(start){ %><%=moment(start).format( 'MMM-DD-YYYY HH:MM')%><% } else { %> <% } %>" required>
-                        </select>
+                        <input class="form-control input-lg" type="datetime-local" id="start_date" name="start_date" <% if(start){ %>value="<%= moment(start).format('MM-DD-YYYY HH:mm') %>"<% } %> required>
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="end_date">Befejezés</label>
-                        <input class="form-control input-lg" type="datetime-local" id="end_date" name="end_date"  value="<% if(end){ %>moment(end).format( 'MMM-DD-YYYY HH:MM')<% } else { %> <% } %>">
-                        </select>
+                        <input class="form-control input-lg" type="datetime-local" id="end_date" name="end_date" <% if(end){ %>value="<%= moment(end).format('MM-DD-YYYY HH:mm') %>"<% } %> required>
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="room">Tanuló</label>
-                        <select class="form-control" id="room" name="room" size="1">
+                        <select class="form-control" id="room" name="room" size="1" >
                             <% for(var i = 3; i <= 18;i++) { %>
-                                <option value=<%=i %>>
+                                <option value="<%=i %>" <% if(roomId == i){ %>selected="selected"<% } %> >
                                     <%= i %>
                                 </option>
                                 <% } %>
