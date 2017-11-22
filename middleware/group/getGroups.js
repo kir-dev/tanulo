@@ -15,6 +15,7 @@ var getGroups = function (models) {
         
         getAllGroups().then(function (groups) {
             req.group = groups;
+
             return next();
         });
     };

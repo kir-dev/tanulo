@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
             classMethods: {
                 associate: function (models) {
                     Group.belongsToMany(models.user, {through: 'userGroup'});
-                    Group.hasOne(models.user, {as: 'owner'});
+                    Group.belongsTo(models.user, {as: 'owner'});
                 }
             }
         });

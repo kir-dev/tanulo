@@ -38,4 +38,8 @@ router.post('/uj', createTicket(models), function (req, res, next) {
     res.redirect('/hibajegyek');
 });
 
+router.delete('/:id', createTicket(models), function (req, res, next) {
+    res.redirect('/hibajegyek');
+});
+
 module.exports = router;

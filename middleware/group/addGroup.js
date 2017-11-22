@@ -1,7 +1,7 @@
 var addGroup = function (models) {
     var createGroup = function (groupDTO) {
         let dnd = false;
-        if(groupDTO.doNotDisturb){
+        if(groupDTO.doNotDisturb === "true"){
             dnd = true;
         }
         return models.group.create({
