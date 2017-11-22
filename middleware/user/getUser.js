@@ -8,10 +8,6 @@ var getUser = function (models, id){
     }
     
     return function (req, res, next) {
-        if (!req.isAuthenticated()) {
-            res.redirect('/');
-        }
-
         getUserById(req.params.id).then(function (user) {
                 req.userProfile = user;
                 return next();

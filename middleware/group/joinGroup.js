@@ -12,16 +12,14 @@ var joinGroup = function (models) {
     };
 
     return function (req, res, next) {
-        if (!req.isAuthenticated()) {
-            res.redirect('/');
-        }
-
         let userPromise = findUserById(req.user.internal_id);
         let groupPromise = findGroupById(req.params.id);
 
         Promise.all([userPromise, groupPromise]).then(function (result) {
             let [user, group] = result;
-            if(group.doNotDisturb){return next();}
+            if (group.doNotDisturb) {
+                return next();
+            }
             group.addUser(user);
             return next();
         });

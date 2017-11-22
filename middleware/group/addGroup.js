@@ -16,11 +16,14 @@ var addGroup = function (models) {
     };
 
     return function (req, res, next) {
-        if (!req.isAuthenticated()) {
-            res.redirect('/');
-        }
-
-        createGroup(req.body).then(function () {
+        createGroup(req.body).then(function (err) {
+            if(err){
+                //log
+                res.render('error', {
+                    message: err.message,
+                    error: err
+                });            
+            }
             return next();
         });
     };

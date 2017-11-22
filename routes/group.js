@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('passport');
 var moment = require('moment');
 
 var models = require('../models');
@@ -10,11 +9,11 @@ var getGroups = require('../middleware/group/getGroups');
 var getGroup = require('../middleware/group/getGroup');
 var joinGroup = require('../middleware/group/joinGroup');
 
-passport.authenticate('oauth2', {
-    failureRedirect: '/auth/example'
-});
+var requireAuthentication = require('../middleware/user/isAuthenticated');
 
-router.get('/', getGroups(models), function (req, res, next) {
+router.use(requireAuthentication);
+
+router.get('/', getGroups(models), function (req, res) {
     res.render('pages/index', {
         userData: req.user,
         groups: req.group,
@@ -22,11 +21,7 @@ router.get('/', getGroups(models), function (req, res, next) {
     });
 });
 
-router.get('/uj', function (req, res, next) {
-    if (!req.isAuthenticated()) {
-        res.redirect('/');
-    }
-
+router.get('/uj', function (req, res) {
     res.render('pages/groups/new', {
         userData: req.user,
         start: req.query.start,
@@ -35,11 +30,11 @@ router.get('/uj', function (req, res, next) {
     });
 });
 
-router.post('/uj', addGroup(models), function (req, res, next) {
+router.post('/uj', addGroup(models), function (req, res) {
     res.redirect('/csoportok');
 });
 
-router.get('/:id', getGroup(models), function (req, res, next) {
+router.get('/:id', getGroup(models), function (req, res) {
     res.render('pages/groups/view', {
         userData: req.user,
         group: req.group,
@@ -47,7 +42,7 @@ router.get('/:id', getGroup(models), function (req, res, next) {
     });
 });
 
-router.post('/:id/csatlakozas', joinGroup(models), function (req, res, next) {
+router.post('/:id/csatlakozas', joinGroup(models), function (req, res) {
     res.redirect('/csoportok/' + req.params.id);
 });
 

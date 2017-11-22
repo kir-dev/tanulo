@@ -7,9 +7,9 @@ var models = require('../models');
 var getTickets = require('../middleware/ticket/getTickets');
 var createTicket = require('../middleware/ticket/createTicket');
 
-passport.authenticate('oauth2', {
-    failureRedirect: '/auth/example'
-});
+var requireAuthentication = require('../middleware/user/isAuthenticated');
+
+router.use(requireAuthentication);
 
 router.get('/', getTickets(models), function (req, res, next) {
     res.render('pages/tickets/view', {
@@ -21,15 +21,8 @@ router.get('/', getTickets(models), function (req, res, next) {
 });
 
 router.get('/uj', function (req, res, next) {
-    if (!req.isAuthenticated()) {
-        res.redirect('/');
-    }
-
-    var results = [];
-
     res.render('pages/tickets/new', {
         userData: req.user,
-        subjects: results,
         active: req.active
     });
 });
