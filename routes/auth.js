@@ -36,7 +36,7 @@ router.use('/example/callback',
                 avatar: 'default.jpg'
             }
         }).then(function () {
-            res.redirect('/csoportok');
+            res.redirect('/');
 
         }).catch(function (error) {
             res.status(404).send(error);

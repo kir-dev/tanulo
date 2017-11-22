@@ -5,7 +5,6 @@
         <div class="panel-body">
             <h2>Tanuló szobák</h2>
             <hr>
-            <ul>
                 <% for(var i = 3; i <= 18; i++) { var color = "green"; %>
                 <% groups.forEach(function(group) { %>
                 <% if (group.room == i && !group.doNotDisturb) {
@@ -13,23 +12,24 @@
 
                 } else if(group.room == i && group.doNotDisturb){ color = "red";}%>
                 <% }); %>
-                <div class="col-md-4 col-lg-4 text-center">
-                    <div class="well">
-                        <h2><%= i %>. emelet</h2>
-                        <hr>
-                        <div class="pulse" data-status="<% if(color=="red"){ %>red<% } else if(color == "green"){ %>green<% } else{ %>yellow<%}%>">
-                            <div class="status">
-                            </div>
-                        </div>
 
-                        <a href="tanulo/<%= i %>" class="btn btn-default">Megnyitás</a>
-
-                    </div>
-
+                <div class="alert <% if(color === "green") { %></div> alert-success  <% } else if(color === "orange") { %> alert-warning <% } else { %> alert-danger <% } %>" 
+                role="alert"
+                style="margin-bottom: 5px;">
+                    <strong><%= i %>. Emelet</strong>
+                    <a href="tanulo/<%= i %>" class="btn btn-default pull-right" style="position: relative; top: -7px; margin: 0 2px; ">Naptár</a>
+                    <% if(color === "green") { %>
+                        <a href="tanulo/<%= i %>" class="btn btn-success pull-right" style="position: relative; top: -7px; margin: 0 2px; width: 100px">Foglalás</a>
+                        <% } %>
+                        <% if(color === "orange") { %>
+                            <a href="tanulo/<%= i %>" class="btn btn-warning pull-right" style="position: relative; top: -7px; margin: 0 2px; width: 100px">Csatlakozás</a>
+                            <% } %>
+                            <% if(color === "red") { %>
+                                <a href="tanulo/<%= i %>" class="btn btn-danger disabled pull-right" style="position: relative; top: -7px; margin: 0 2px; width: 100px">Foglalt</a>
+                                <% } %>
                 </div>
 
                 <% } %>
-            </ul>
         </div>
     </div>
 </div>
