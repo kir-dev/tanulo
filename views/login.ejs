@@ -4,31 +4,31 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <h2>Tanuló szobák</h2>
-            <hr>
-                <% for(var i = 3; i <= 18; i++) { var color = "green"; %>
-                <% groups.forEach(function(group) { %>
-                <% if (group.room == i && !group.doNotDisturb) {
-                    color = "orange";
-
-                } else if(group.room == i && group.doNotDisturb){ color = "red";}%>
+                <% for(var i = 3; i <= 18; i++) { 
+                    var color = 'green'; %>
+                    <% groups.forEach(function(group) {
+                    if (group.room == i && !group.doNotDisturb) {
+                        color = 'orange';
+                    } else if(group.room == i && group.doNotDisturb){ 
+                        color = 'red';
+                    } %>
                 <% }); %>
 
-                <div class="alert <% if(color === "green") { %></div> alert-success  <% } else if(color === "orange") { %> alert-warning <% } else { %> alert-danger <% } %>" 
+                <div class="alert <% if(color === 'green') { %> alert-success <% } else if(color === 'orange') { %> alert-warning <% } else { %> alert-danger <% } %>" 
                 role="alert"
                 style="margin-bottom: 5px;">
                     <strong><%= i %>. Emelet</strong>
                     <a href="tanulo/<%= i %>" class="btn btn-default pull-right" style="position: relative; top: -7px; margin: 0 2px; ">Naptár</a>
                     <% if(color === "green") { %>
                         <a href="csoportok/uj/?roomId=<%= i %>" class="btn btn-success pull-right" style="position: relative; top: -7px; margin: 0 2px; width: 100px">Foglalás</a>
-                        <% } %>
-                        <% if(color === "orange") { %>
-                            <a href="tanulo/<%= i %>" class="btn btn-warning pull-right" style="position: relative; top: -7px; margin: 0 2px; width: 100px">Csatlakozás</a>
-                            <% } %>
-                            <% if(color === "red") { %>
-                                <a href="tanulo/<%= i %>" class="btn btn-danger disabled pull-right" style="position: relative; top: -7px; margin: 0 2px; width: 100px">Foglalt</a>
-                                <% } %>
+                    <% } %>
+                    <% if(color === "orange") { %>
+                        <a href="csoportok/<%= groups.find(group => group.room === i).id %>" class="btn btn-warning pull-right" style="position: relative; top: -7px; margin: 0 2px; width: 100px">Csatlakozás</a>
+                    <% } %>
+                    <% if(color === "red") { %>
+                        <a href="tanulo/<%= i %>" class="btn btn-danger disabled pull-right" style="position: relative; top: -7px; margin: 0 2px; width: 100px">Foglalt</a>
+                    <% } %>
                 </div>
-
                 <% } %>
         </div>
     </div>
