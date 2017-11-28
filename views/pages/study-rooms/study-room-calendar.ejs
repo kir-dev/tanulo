@@ -1,4 +1,9 @@
-<% layout('../layout/main') -%>
+<% layout('../../layout/main') -%>
+
+<link href="/fullcalendar/fullcalendar.css" rel="stylesheet">
+<script src="/fullcalendar/moment.min.js"></script>
+<script src="/fullcalendar/jquery.min.js"></script>
+<script src="/fullcalendar/fullcalendar.min.js"></script>
 
     <div class="col-lg-10 col-md-9">
         <div class="panel panel-default">
@@ -38,7 +43,7 @@
                         selectable: true,
                         selectHelper: true,
                         select: function (start, end) {
-                            location.href = '/csoportok/uj?start=' + start + '&end=' + end;
+                            location.href = '/csoportok/uj?start=' + start + '&end=' + end + '&roomId=' + roomNumber;
                         },
                     })
                 }

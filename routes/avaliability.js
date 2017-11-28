@@ -6,7 +6,7 @@ var models = require('../models');
 var getAvaliableRooms = require('../middleware/avaliability/getAvaliableRooms');
 
 router.get('/', getAvaliableRooms(models), function (req, res, next) {
-        res.render('login', {
+        res.render('pages/study-rooms/study-rooms', {
                 userData: req.user,
                 groups: req.groups
         });

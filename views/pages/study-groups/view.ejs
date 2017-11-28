@@ -1,0 +1,34 @@
+<% layout('../../layout/main') -%>
+
+<div class="col-lg-10 col-md-9">
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h2><%= group.name %></h2>
+            <div class="col-md-6">
+                <span class="text-muted"><%=  moment(group.startDate).format( 'LLLL') %> - <%=  moment(group.endDate).format( 'LLLL') %></span>
+                <p class="summary"><%= group.description %></p>
+            </div>
+            <% if(group.doNotDisturb){ %>
+            <div class="pull-right">
+            <p class="alert">A csoport létrehozója nem szeretné, ha mások csatlakoznának.</p>
+            </div>
+            <% } else{ %>
+            <form method="post" action="/csoportok/<%= group.id %>/csatlakozas">
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-success">Csatlakozok a csoporthoz</button>
+                </div>
+            </form>
+            <% } %>
+            <div class="col-md-6">
+                <h3>Résztvevők</h3>
+                <ul class="list-group">
+                    <% group.users.forEach(function (user) { %>
+                    <li class="list-group-item"><a href="/felhasznalo/<%= user.id %>"><%= user.name %></a></li>
+                    <% }); %>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

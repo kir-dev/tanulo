@@ -14,7 +14,7 @@ var requireAuthentication = require('../middleware/user/isAuthenticated');
 router.use(requireAuthentication);
 
 router.get('/', getGroups(models), function (req, res) {
-    res.render('pages/index', {
+    res.render('pages/study-groups/study-groups', {
         userData: req.user,
         groups: req.group,
         moment: moment
@@ -22,7 +22,7 @@ router.get('/', getGroups(models), function (req, res) {
 });
 
 router.get('/uj', function (req, res) {
-    res.render('pages/groups/new', {
+    res.render('pages/study-groups/new', {
         userData: req.user,
         start: Number(req.query.start),
         end: Number(req.query.end),
@@ -36,7 +36,7 @@ router.post('/uj', addGroup(models), function (req, res) {
 });
 
 router.get('/:id', getGroup(models), function (req, res) {
-    res.render('pages/groups/view', {
+    res.render('pages/study-groups/view', {
         userData: req.user,
         group: req.group,
         moment: moment

@@ -1,0 +1,47 @@
+<% layout('../../layout/main') -%>
+
+    <div class="col-lg-10 col-md-9">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <h2>Új csoport</h2>
+                <form method="POST" action="/csoportok/uj">
+                    <fieldset class="form-group">
+                        <label for="name">Név</label>
+                        <input class="form-control input-lg" type="text" name="name" id="name" placeholder="Diffegyenletek" required>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="subject">Tárgy</label>
+                        <input class="form-control input-lg" type="text" id="subject" name="subject" placeholder="Analízis I.">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="start_date">Kezdés</label>
+                        <input class="form-control input-lg" type="datetime-local" id="start_date" name="start_date" <% if(start){ %>value="<%= moment(start).format('MM-DD-YYYY HH:mm') %>"<% } %> required>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="end_date">Befejezés</label>
+                        <input class="form-control input-lg" type="datetime-local" id="end_date" name="end_date" <% if(end){ %>value="<%= moment(end).format('MM-DD-YYYY HH:mm') %>"<% } %> required>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="room">Tanuló</label>
+                        <select class="form-control" id="room" name="room" size="1" >
+                            <% for(var i = 3; i <= 18;i++) { %>
+                                <option value="<%=i %>" <% if(roomId == i){ %>selected="selected"<% } %> >
+                                    <%= i %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="description">Leírás</label>
+                        <textarea class="form-control input-lg" rows="3" id="description" name="description"></textarea>
+                    </fieldset>
+                    <input type="checkbox" id="doNotDisturb" name="doNotDisturb" value="true"> <label for="doNotDisturb"> Nem szeretném, hogy mások csatlakozzanak.</label><br>
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-success">Új csoport létrehozása</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

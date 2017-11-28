@@ -10,7 +10,7 @@ router.use(function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-    res.render('pages/calendar', {
+    res.render('pages/study-rooms/study-room-calendar', {
         userData: req.user
     });
 });
