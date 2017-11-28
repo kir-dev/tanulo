@@ -97,6 +97,9 @@ app.use('/felhasznalo', user);
 app.use('/beallitasok', settings);
 app.use('/elozmenyek', history);
 app.use('/hibajegyek', tickets);
+app.use('*', function (req, res) {
+    res.render('pages/errors/not-found');
+});
 
 // error handlers
 // catch 404 and forward to error handler
@@ -113,19 +116,21 @@ app.use(function (req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        err.status = err.status || 500;
+        res.render('pages/errors/error', {
+            development: true,
             message: err.message,
             error: err
         });
     });
+} else {
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('pages/errors/error', {
+            development: false,
+        });
+    });
 }
 
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: err
-    });
-});
 
 module.exports = app;

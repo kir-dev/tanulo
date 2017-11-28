@@ -18,11 +18,8 @@ var addGroup = function (models) {
     return function (req, res, next) {
         createGroup(req.body).then(function (err) {
             if(err){
-                //log
-                res.render('error', {
-                    message: err.message,
-                    error: err
-                });            
+                //TODO error handling
+                //console.log(err);    
             }
             return next();
         });
