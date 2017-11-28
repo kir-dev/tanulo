@@ -9,12 +9,11 @@ var moment = require('moment');
 require('dotenv').config();
 
 var authorizationRoutes = require('./routes/auth');
-var avaliability = require('./routes/avaliability');
-var group = require('./routes/group');
+var rooms = require('./routes/rooms');
+var groups = require('./routes/groups');
 var settings = require('./routes/settings');
 var history = require('./routes/history');
 var user = require('./routes/users');
-var calendar = require('./routes/calendar');
 var tickets = require('./routes/tickets');
 
 var passport = require('passport'),
@@ -89,10 +88,12 @@ passport.deserializeUser(function (user, done) {
 });
 
 //ROUTING
-app.use('/', avaliability);
+app.use('^/$', function (req, res) {
+    res.redirect('/tanuloszobak');
+});
+app.use('/tanuloszobak', rooms);
 app.use('/auth', authorizationRoutes);
-app.use('/tanulo', calendar);
-app.use('/csoportok', group);
+app.use('/csoportok', groups);
 app.use('/felhasznalo', user);
 app.use('/beallitasok', settings);
 app.use('/elozmenyek', history);

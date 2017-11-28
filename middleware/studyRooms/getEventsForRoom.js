@@ -1,4 +1,5 @@
 var getEventsForRoom = function (models) {
+    
     var getGroupForRoom = function (roomId) {
         return models.group.findAll({
             where: {
@@ -10,6 +11,7 @@ var getEventsForRoom = function (models) {
     return function (req, res, next) {
         getGroupForRoom(req.params.id).then(function (groups) {
             var eventsArray = [];
+
             groups.forEach(function (group) {
                 eventsArray.push({
                     title: group.name,
@@ -18,6 +20,7 @@ var getEventsForRoom = function (models) {
                     groupId: group.id
                 });
             });
+            
             req.events = eventsArray;
             return next();
         });
