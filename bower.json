@@ -1,0 +1,23 @@
+{
+  "name": "Tanulo",
+  "description": "",
+  "main": "",
+  "authors": [
+    "fenyopeti <petyu8@msn.com>"
+  ],
+  "license": "Kir-Dev",
+  "homepage": "https://github.com/kir-dev/tanulo",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "bootstrap": "^3.3.7",
+    "fullcalendar": "^3.7.0"
+  }
+}
