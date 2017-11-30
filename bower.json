@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "3.3.0",
     "fullcalendar": "^3.7.0"
   }
 }
