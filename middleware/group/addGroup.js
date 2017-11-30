@@ -1,8 +1,8 @@
 var addGroup = function (models) {
-    var createGroup = function (groupDTO, res, next) {
+    var createGroup = function (groupDTO) {
 
         //Check conflicts
-        models.group.findOne({
+       return models.group.findOne({
             where: {
                 $or: [
                     {
@@ -27,30 +27,37 @@ var addGroup = function (models) {
             }
 
         }).then(function (event) {
-            if(event !== null){
-                res.status('401').send({error:' A megadott idopontban mar foglalt a tanulo'});
-            }
-        });
 
-        let dnd = false;
-        if (groupDTO.doNotDisturb) {
-            dnd = true;
-        }
-        return models.group.create({
-            name: groupDTO.name,
-            subject: groupDTO.subject,
-            description: groupDTO.description,
-            startDate: groupDTO.start_date,
-            endDate: groupDTO.end_date,
-            room: groupDTO.room,
-            doNotDisturb: dnd
+            if(event !== null){
+               throw new Error('Time conflict');
+            }
+            let dnd = false;
+            if (groupDTO.doNotDisturb) {
+                dnd = true;
+            }
+            return models.group.create({
+                name: groupDTO.name,
+                subject: groupDTO.subject,
+                description: groupDTO.description,
+                startDate: groupDTO.start_date,
+                endDate: groupDTO.end_date,
+                room: groupDTO.room,
+                doNotDisturb: dnd
+            });
         });
     };
 
     return function (req, res, next) {
-        createGroup(req.body, res, next).then(function (err) {
+        createGroup(req.body).then(function () {
 
             return next();
+        }).catch(function (error) {
+           if(error.message === 'Time conflict'){
+               res.status('401').send({error: error.message});
+               return;
+           }
+
+           throw error;
         });
     };
 };
