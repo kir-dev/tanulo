@@ -17,7 +17,8 @@
 
     <script>
         $(document).ready(function () {
-            var roomNumber = window.location.pathname.substr(window.location.pathname.length - 1);
+            var array = window.location.pathname.split('/');
+            var roomNumber = array.pop();
 
             $.ajax({
                 url: "http://localhost:3000/tanuloszobak/" + roomNumber + "/event",
