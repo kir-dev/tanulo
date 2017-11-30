@@ -27,10 +27,10 @@ var addGroup = function (models) {
             }
 
         }).then(function (event) {
-
             if(event !== null){
                throw new Error('Time conflict');
             }
+
             let dnd = false;
             if (groupDTO.doNotDisturb) {
                 dnd = true;
