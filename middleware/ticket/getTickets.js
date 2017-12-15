@@ -4,10 +4,6 @@ var getTicket = function (models) {
     };
 
     return function (req, res, next) {
-        if (!req.isAuthenticated()) {
-            res.redirect('/');
-        }
-
         getAllTicket().then(function (tickets) {
             req.tickets = tickets;
             return next();

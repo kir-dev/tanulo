@@ -1,0 +1,21 @@
+<% layout('../../layout/error-layout') -%>
+
+    <div class="container">
+
+
+      <h1>TanuloSCH</h1>
+      <hr>
+      <div class="panel panel-default">
+        <div class="panel-body text-center">
+        <h3>ERROR<h3>
+        <hr>
+        <h4>Hiba van tesó :(</h4>
+        <% if(development) { %>
+        <p><%= error.status %> - <%= error.message %></p>
+        <p><%= error.stack %></p>
+        <% } %>
+        <img src="https://cdn3.iconfinder.com/data/icons/minimal-1/110/Face-2-512.png" alt="" />
+      </div>
+      </div>
+
+    </div>

@@ -37,7 +37,7 @@ router.use('/example/callback',
                 admin: false
             }
         }).then(function () {
-            res.redirect('/csoportok');
+            res.redirect('/');
 
         }).catch(function (error) {
             res.status(404).send(error);

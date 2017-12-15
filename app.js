@@ -9,12 +9,11 @@ var moment = require('moment');
 require('dotenv').config();
 
 var authorizationRoutes = require('./routes/auth');
-var avaliability = require('./routes/avaliability');
-var group = require('./routes/group');
+var rooms = require('./routes/rooms');
+var groups = require('./routes/groups');
 var settings = require('./routes/settings');
 var history = require('./routes/history');
 var user = require('./routes/users');
-var calendar = require('./routes/calendar');
 var tickets = require('./routes/tickets');
 
 var passport = require('passport'),
@@ -39,7 +38,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -89,14 +88,19 @@ passport.deserializeUser(function (user, done) {
 });
 
 //ROUTING
-app.use('/', avaliability);
+app.use('^/$', function (req, res) {
+    res.redirect('/tanuloszobak');
+});
+app.use('/tanuloszobak', rooms);
 app.use('/auth', authorizationRoutes);
-app.use('/tanulo', calendar);
-app.use('/csoportok', group);
+app.use('/csoportok', groups);
 app.use('/felhasznalo', user);
 app.use('/beallitasok', settings);
 app.use('/elozmenyek', history);
 app.use('/hibajegyek', tickets);
+app.use('*', function (req, res) {
+    res.render('pages/errors/not-found');
+});
 
 // error handlers
 // catch 404 and forward to error handler
@@ -113,19 +117,21 @@ app.use(function (req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        err.status = err.status || 500;
+        res.render('pages/errors/error', {
+            development: true,
             message: err.message,
             error: err
         });
     });
+} else {
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('pages/errors/error', {
+            development: false,
+        });
+    });
 }
 
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: err
-    });
-});
 
 module.exports = app;

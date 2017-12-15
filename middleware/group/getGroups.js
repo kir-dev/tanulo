@@ -8,11 +8,6 @@ var getGroups = function (models) {
     };
 
     return function (req, res, next) {
-        if (!req.isAuthenticated()) {
-            res.redirect('/');
-            return;
-        }
-        
         getAllGroups().then(function (groups) {
             req.group = groups;
 
