@@ -6,6 +6,8 @@ var moment = require('moment');
 var models = require('../models');
 var getTickets = require('../middleware/ticket/getTickets');
 var createTicket = require('../middleware/ticket/createTicket');
+var deleteTicket = require('../middleware/ticket/deleteTicket');
+var validateAdmin = require('../middleware/user/validateAdmin');
 
 passport.authenticate('oauth2', {
     failureRedirect: '/auth/example'
@@ -38,7 +40,7 @@ router.post('/uj', createTicket(models), function (req, res, next) {
     res.redirect('/hibajegyek');
 });
 
-router.delete('/:id', createTicket(models), function (req, res, next) {
+router.delete('/:id', validateAdmin(), deleteTicket(models), function (req, res, next) {
     res.redirect('/hibajegyek');
 });
 

@@ -1,22 +1,5 @@
 var deleteTicket = function (models) {
     return function (req, res, next) {
-        if (!req.isAuthenticated()) {
-            res.redirect('/');
-        }
-
-
-        models.user.find({
-                where: {
-                    authschId: req.user.internal_id
-                },
-            include: [models.userRole]
-            }).then(function (user) {
-            if(user.userRole !== "admin"){
-                res.redirect('/');
-            }
-        });
-            
-        
         models.ticket.deleteById({
             id: req.params.id
         }).then(function () {
@@ -25,4 +8,4 @@ var deleteTicket = function (models) {
     };
 };
 
-module.exports = createTicket;
+module.exports = deleteTicket;

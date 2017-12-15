@@ -33,7 +33,8 @@ router.use('/example/callback',
             },
             defaults: {
                 name: req.user.displayName,
-                avatar: 'default.jpg'
+                avatar: 'default.jpg',
+                admin: false
             }
         }).then(function () {
             res.redirect('/csoportok');
