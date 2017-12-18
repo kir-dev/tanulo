@@ -15,10 +15,9 @@ router.use('/logout', function (req, res) {
 router.use('/example/callback',
     function (req, res, next) {
         if (req.isAuthenticated()) {
-            console.log('isAuth true');
+
             res.redirect('/');
         } else {
-            console.log('isAuth false');
             return next();
         }
     },
@@ -26,6 +25,7 @@ router.use('/example/callback',
         failureRedirect: '/auth/example'
     }),
     function (req, res) {
+    console.log(req.user);
         // Sikeres azonositas
         models.user.findOrCreate({
             where: {
@@ -33,6 +33,8 @@ router.use('/example/callback',
             },
             defaults: {
                 name: req.user.displayName,
+                email: req.user.email,
+                roomNumber: req.user.roomNumber,
                 avatar: 'default.jpg',
                 admin: false
             }

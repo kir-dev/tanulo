@@ -7,15 +7,20 @@ var models = require('../models');
 var getTickets = require('../middleware/ticket/getTickets');
 var createTicket = require('../middleware/ticket/createTicket');
 var deleteTicket = require('../middleware/ticket/deleteTicket');
-var validateAdmin = require('../middleware/user/validateAdmin');
+var validateAdmin = require('../middleware/user/checkAdmin');
+var checkAdmin = require('../middleware/user/validateAdmin');
 
 var requireAuthentication = require('../middleware/user/isAuthenticated');
 
 router.use(requireAuthentication);
 
-router.get('/', getTickets(models), function (req, res, next) {
+router.get('/', checkAdmin(models), getTickets(models), function (req, res, next) {
+    console.log("inside get route");
+
+    console.log(req);
     res.render('pages/tickets/view', {
         userData: req.user,
+        admin: req.admin,
         tickets: req.tickets,
         active: req.active,
         moment: moment
@@ -33,7 +38,7 @@ router.post('/uj', createTicket(models), function (req, res, next) {
     res.redirect('/hibajegyek');
 });
 
-router.delete('/:id', validateAdmin(), deleteTicket(models), function (req, res, next) {
+router.get('/delete/:id', validateAdmin(models), deleteTicket(models), function (req, res, next) {
     res.redirect('/hibajegyek');
 });
 

@@ -11,7 +11,6 @@ var getGroup = function (models, id) {
     return function (req, res, next) {
         findGroupById(req.params.id).then(function (group) {
             req.group = group;
-           console.log(group);
             return next();
         });
     };

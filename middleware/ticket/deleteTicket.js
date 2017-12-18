@@ -1,8 +1,8 @@
 var deleteTicket = function (models) {
     return function (req, res, next) {
-        models.ticket.deleteById({
-            id: req.params.id
-        }).then(function () {
+        console.log(req);
+        models.ticket.findById(req.params.id).then(function (ticket) {
+            ticket.destroy();
             return next();
         });
     };
