@@ -4,12 +4,15 @@ var router = express.Router();
 var models = require('../models');
 var getUser = require('../middleware/user/getUser');
 
+var requireAuthentication = require('../middleware/user/isAuthenticated');
 
-router.get('/profil/:id', getUser(models), function(req, res, next) {
+router.use(requireAuthentication);
 
-    if (!req.isAuthenticated()) { res.redirect('/'); }
-
-    res.render('pages/users/view', {userData: req.user, user: req.userProfile, active: req.active});
+router.get('/:id', getUser(models), function (req, res, next) {
+    res.render('pages/users/view', {
+        userData: req.user,
+        user: req.userProfile
+    });
 });
 
 module.exports = router;

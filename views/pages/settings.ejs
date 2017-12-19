@@ -1,41 +1,29 @@
-<%- include('../partials/header'); %>
+<% layout('../layout/main') -%>
 
-<!-- BODY HERE -->
+<div class="col-lg-10 col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h2>Beállítások</h2>
+            <hr>
+            <!-- Standar Form -->
 
-       <div class="col-lg-10 col-md-9">
-        <div class="panel panel-default">
-          <div class="panel-body">
-                <h2>Beállítások</h2>
-                <hr>
-                <!-- Standar Form -->
+            <div class="form-group">
 
-                     <div class="form-group">
-                       
-                     </div>     <h4>Tölts fel profilképet</h4>
-                          <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-                            <div class="form-inline">
-                              <div class="form-group">
-                                <input type="file" name="files[]" id="js-upload-files" multiple>
-                              </div>
-                              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
-                            </div>
-                          </form>
+            </div>
+            <h4>Tölts fel profilképet</h4>
+            <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <input type="file" name="files[]" id="js-upload-files" multiple>
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+                </div>
+            </form>
 
             <div class="pull-right">
                 <a href="" class="btn btn-success">Mentés</a>
-              </div>
-          </div>
+            </div>
         </div>
-       
-      </div>
-    </section>
     </div>
-  </div>
+
 </div>
-</div>      
-
-
-  
-
-    <!-- BODY END -->
-<%- include('../partials/footer'); %>

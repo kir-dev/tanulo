@@ -1,0 +1,44 @@
+<% layout('../../layout/main') -%>
+
+<div class="col-lg-10 col-md-9">
+
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="pull-left"><h2>Tanuló csoportok</h2></div>
+            <div class="pull-right">
+                <a href="/csoportok/uj" class="btn btn-success">Új csoport létrehozása</a>
+            </div>
+
+
+                <div class="table-container">
+
+                    <table class="table table-filter">
+                        <tbody>
+                        <% groups.forEach(function(group) { %>
+                        <tr data-status="pagado">
+                            <td>
+                                <div class="media">
+
+                                    <div class="media-body">
+
+                                        <span class="media-meta pull-right"><%= moment(group.startDate).format( 'LLLL') %>
+                                            - <%= moment(group.endDate).format( 'LLLL') %></span>
+
+                                        <h4 class="title">
+                                            <a href="/csoportok/<%= group.id %>"><%= group.name %></a>
+                                        </h4>
+                                        <span class="media-meta pull-right">Tanuló:<%= group.room%></span>
+                                        <p class="summary"><%= group.description %></p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <% }); %>
+
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+</div>

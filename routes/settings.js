@@ -1,17 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-var passport = require('passport');
-var pg = require('pg');
+var requireAuthentication = require('../middleware/user/isAuthenticated');
 
-passport.authenticate('oauth2', {failureRedirect: '/auth/example'}),
-router.get('/', function(req, res, next) {
+router.use(requireAuthentication);
 
-    if (!req.isAuthenticated()) { res.redirect('/'); }
-    res.render('pages/settings', {userData: req.user, active: req.active});
-
+router.get('/', function (req, res, next) {
+    res.render('pages/settings', {
+        userData: req.user
+    });
 });
-
-
 
 module.exports = router;

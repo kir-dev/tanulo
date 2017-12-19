@@ -1,0 +1,53 @@
+<% layout('../../layout/main') %>
+
+<script src="/bower_components/moment/min/moment.min.js"></script>
+<script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="/bower_components/fullcalendar/dist/locale/hu.js"></script>
+<link href="/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+
+    <div class="col-lg-10 col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body text-center">
+                <section class="content">
+                    <div id='calendar'></div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var array = window.location.pathname.split('/');
+            var roomNumber = array.pop();
+
+            $.ajax({
+                url: "http://localhost:3000/tanuloszobak/" + roomNumber + "/event",
+                type: "GET",
+                data: {
+                    id: roomNumber
+                },
+                dataType: "json",
+                success: function (response) {
+                    console.log('Server response: ' + response);
+                    $('#calendar').fullCalendar({
+                        locale: 'hu',
+                        firstDay: 1,
+                        defaultView: 'agendaWeek',
+                        editable: false,
+                        header: {
+                            right: 'agendaDay agendaWeek month'
+                        },
+                        events: response,
+                        eventClick: function (calEvent, jsEvent, view) {
+                            location.href = ('/csoportok/' + calEvent.groupId);
+                        },
+                        selectable: true,
+                        selectHelper: true,
+                        select: function (start, end) {
+                            location.href = '/csoportok/uj?start=' + start + '&end=' + end + '&roomId=' + roomNumber;
+                        },
+                    })
+                }
+            });
+        });
+    </script>

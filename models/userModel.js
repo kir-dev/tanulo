@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 module.exports = function (sequelize, DataTypes) {
     var User = sequelize.define(
-        "user",
+        'user',
         {
             name: DataTypes.STRING,
             authschId: DataTypes.STRING,
@@ -15,6 +15,7 @@ module.exports = function (sequelize, DataTypes) {
                 associate: function (models) {
                     User.belongsToMany(models.group, {through: 'userGroup'});
                 }
+
             }
         });
 

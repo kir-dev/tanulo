@@ -1,20 +1,22 @@
-"use strict";
+'use strict';
 
 module.exports = function (sequelize, DataTypes) {
     var Group = sequelize.define(
-        "group",
+        'group',
         {
             name: DataTypes.STRING,
             subject: DataTypes.STRING,
             description: DataTypes.STRING,
             startDate: DataTypes.DATE,
             endDate: DataTypes.DATE,
-            room: DataTypes.INTEGER
+            room: DataTypes.INTEGER,
+            doNotDisturb: DataTypes.BOOLEAN
         },
         {
             classMethods: {
                 associate: function (models) {
                     Group.belongsToMany(models.user, {through: 'userGroup'});
+                    Group.belongsTo(models.user, {as: 'owner'});
                 }
             }
         });
