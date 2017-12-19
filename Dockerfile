@@ -9,6 +9,7 @@ COPY package-lock.json .
 COPY .env.development .env
 
 RUN npm install
+RUN bower install
 
 # Bundle app source
 COPY . .

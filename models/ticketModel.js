@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 module.exports = function (sequelize, DataTypes) {
     var Ticket = sequelize.define(
-        "ticket",
+        'ticket',
         {
             description: DataTypes.STRING,
             roomNumber: DataTypes.INTEGER
