@@ -16,6 +16,8 @@ var history = require('./routes/history');
 var user = require('./routes/users');
 var tickets = require('./routes/tickets');
 
+var models = require('./models');
+
 var passport = require('passport'),
     OAuth2Strategy = require('passport-oauth2');
 var session = require('express-session');
@@ -80,7 +82,22 @@ app.use(function (req, res, next) {
 });
 
 passport.serializeUser(function (user, done) {
-    done(null, user);
+    console.log("inside serialize");
+    models.user.findOrCreate({
+        where: {
+            authschId: user.internal_id
+        },
+        defaults: {
+            name: user.displayName,
+            email: user.mail,
+            admin: false
+        }
+    }).spread(function (user, created) {
+        console.log(user);
+        done(null, user);
+
+    });
+
 });
 
 passport.deserializeUser(function (user, done) {

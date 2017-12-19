@@ -12,7 +12,7 @@ var joinGroup = function (models) {
     };
 
     return function (req, res, next) {
-        let userPromise = findUserById(req.user.internal_id);
+        let userPromise = findUserById(req.user.id);
         let groupPromise = findGroupById(req.params.id);
 
         Promise.all([userPromise, groupPromise]).then(function (result) {

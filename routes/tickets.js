@@ -10,7 +10,7 @@ var deleteTicket = require('../middleware/ticket/deleteTicket');
 var validateAdmin = require('../middleware/user/validateAdmin');
 var checkAdmin = require('../middleware/user/checkAdmin');
 
-var requireAuthentication = require('../middleware/user/isAuthenticated');
+var requireAuthentication = require('../middleware/user/requireAuthentication');
 
 router.use(requireAuthentication);
 

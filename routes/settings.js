@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var requireAuthentication = require('../middleware/user/isAuthenticated');
+var requireAuthentication = require('../middleware/user/requireAuthentication');
 
 router.use(requireAuthentication);
 

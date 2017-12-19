@@ -1,5 +1,5 @@
 var addGroup = function (models) {
-    var createGroup = function (groupDTO) {
+    var createGroup = function (groupDTO, id) {
 
         //Check conflicts
        return models.group.findOne({
@@ -42,13 +42,14 @@ var addGroup = function (models) {
                 startDate: groupDTO.start_date,
                 endDate: groupDTO.end_date,
                 room: groupDTO.room,
+                ownerId: id,
                 doNotDisturb: dnd
             });
         });
     };
 
     return function (req, res, next) {
-        createGroup(req.body).then(function () {
+        createGroup(req.body, req.user.id).then(function () {
 
             return next();
         }).catch(function (error) {

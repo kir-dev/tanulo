@@ -4,7 +4,9 @@ var passport = require('passport');
 var models = require('../models');
 
 router.use('/login',
-    passport.authenticate('oauth2'));
+    passport.authenticate('oauth2')
+);
+
 
 router.use('/logout', function (req, res) {
         req.logout();
@@ -14,6 +16,7 @@ router.use('/logout', function (req, res) {
 
 router.use('/example/callback',
     function (req, res, next) {
+    console.log("example callback");
         if (req.isAuthenticated()) {
 
             res.redirect('/');
@@ -25,25 +28,7 @@ router.use('/example/callback',
         failureRedirect: '/auth/example'
     }),
     function (req, res) {
-    console.log(req.user);
-        // Sikeres azonositas
-        models.user.findOrCreate({
-            where: {
-                authschId: req.user.internal_id
-            },
-            defaults: {
-                name: req.user.displayName,
-                email: req.user.email,
-                roomNumber: req.user.roomNumber,
-                avatar: 'default.jpg',
-                admin: false
-            }
-        }).then(function () {
-            res.redirect('/');
-
-        }).catch(function (error) {
-            res.status(404).send(error);
-        });
+        res.redirect('/');
     }
 );
 
