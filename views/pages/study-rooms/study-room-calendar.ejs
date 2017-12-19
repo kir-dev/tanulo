@@ -21,7 +21,7 @@
             var roomNumber = array.pop();
 
             $.ajax({
-                url: "http://localhost:3000/tanuloszobak/" + roomNumber + "/event",
+                url: "/tanuloszobak/" + roomNumber + "/event",
                 type: "GET",
                 data: {
                     id: roomNumber
