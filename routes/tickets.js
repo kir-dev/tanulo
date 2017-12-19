@@ -7,17 +7,14 @@ var models = require('../models');
 var getTickets = require('../middleware/ticket/getTickets');
 var createTicket = require('../middleware/ticket/createTicket');
 var deleteTicket = require('../middleware/ticket/deleteTicket');
-var validateAdmin = require('../middleware/user/checkAdmin');
-var checkAdmin = require('../middleware/user/validateAdmin');
+var validateAdmin = require('../middleware/user/validateAdmin');
+var checkAdmin = require('../middleware/user/checkAdmin');
 
 var requireAuthentication = require('../middleware/user/isAuthenticated');
 
 router.use(requireAuthentication);
 
 router.get('/', checkAdmin(models), getTickets(models), function (req, res, next) {
-    console.log("inside get route");
-
-    console.log(req);
     res.render('pages/tickets/view', {
         userData: req.user,
         admin: req.admin,
