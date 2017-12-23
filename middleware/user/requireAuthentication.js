@@ -1,7 +1,7 @@
 module.exports = function (req, res, next) {
     if (req.isAuthenticated()) {
-        next();
+        return next();
     } else {
-        res.render('pages/errors/not-authenticated');
+        return res.render('pages/errors/not-authenticated');
     }
 };
