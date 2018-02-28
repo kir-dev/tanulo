@@ -14,7 +14,6 @@ var requireAuthentication = require('../middleware/user/requireAuthentication');
 router.use(requireAuthentication);
 
 router.get('/', getGroups(models), function (req, res) {
-    console.log(req.user);
     res.render('pages/study-groups/study-groups', {
         userData: req.user,
         groups: req.group,

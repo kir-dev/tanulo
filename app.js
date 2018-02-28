@@ -62,7 +62,6 @@ passport.use(new OAuth2Strategy({
         scope: JSON.parse(process.env.SCOPE)
     },
     function (accessToken, refreshToken, profile, cb) {
-        console.log(accessToken + '\n' + refreshToken + '\n' + JSON.stringify(profile));
         var request = require('request');
         request('https://auth.sch.bme.hu/api/profile?access_token=' + accessToken, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -77,12 +76,10 @@ passport.use(new OAuth2Strategy({
 app.use(function (req, res, next) {
     res.locals.logged_in = req.isAuthenticated();
     res.locals.active = req.path.split('/')[1];
-    console.log(res.locals.active);
     next();
 });
 
 passport.serializeUser(function (user, done) {
-    console.log("inside serialize");
     models.user.findOrCreate({
         where: {
             authschId: user.internal_id
@@ -93,7 +90,6 @@ passport.serializeUser(function (user, done) {
             admin: false
         }
     }).spread(function (user, created) {
-        console.log(user);
         done(null, user);
 
     });
