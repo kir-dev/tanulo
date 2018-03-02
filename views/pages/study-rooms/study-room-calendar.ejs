@@ -7,6 +7,7 @@
 
     <div class="col-lg-10 col-md-9">
         <div class="panel panel-default">
+            <h1><span id="roomNumber">N</span>. Tanuló</h1>
             <div class="panel-body text-center">
                 <section class="content">
                     <div id='calendar'></div>
@@ -19,6 +20,7 @@
         $(document).ready(function () {
             var array = window.location.pathname.split('/');
             var roomNumber = array.pop();
+            $("#roomNumber").text(roomNumber);
 
             $.ajax({
                 url: "/tanuloszobak/" + roomNumber + "/event",
