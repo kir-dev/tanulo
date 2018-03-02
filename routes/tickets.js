@@ -12,7 +12,7 @@ var deleteTicket = require('../middleware/ticket/deleteTicket');
 
 router.use(requireAuthentication);
 
-router.get('/', requireAdmin(), getTickets(models), function (req, res, next) {
+router.get('/', getTickets(models), function (req, res) {
     res.render('pages/tickets/view', {
         userData: req.user,
         admin: req.user.admin,
