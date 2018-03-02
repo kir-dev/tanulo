@@ -35,11 +35,11 @@
         <section class="content">
             <div class="col-lg-2 col-md-3">
                 <div class="profile-sidebar">
-                    <% if(logged_in) { %>
+                    <% if(user) { %>
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
                         <div class="profile-usertitle-name">
-                            <%= userData.name %>
+                            <%= user.name %>
                         </div>
                     </div>
                     <% } %>

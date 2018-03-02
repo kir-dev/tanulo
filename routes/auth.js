@@ -1,35 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var models = require('../models');
 
-router.use('/login',
+require('../config/passport')();
+
+router.post('/login',
     passport.authenticate('oauth2')
 );
 
-
-router.use('/logout', function (req, res) {
-        req.logout();
-        res.redirect('/');
-    }
-);
-
-router.use('/example/callback',
-    function (req, res, next) {
-    console.log("example callback");
-        if (req.isAuthenticated()) {
-
-            res.redirect('/');
-        } else {
-            return next();
-        }
-    },
+router.get('/example/callback',
     passport.authenticate('oauth2', {
-        failureRedirect: '/auth/example'
+        failureRedirect: '/auth/login'
     }),
     function (req, res) {
         res.redirect('/');
-    }
-);
+    });
+
+router.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+});
 
 module.exports = router;

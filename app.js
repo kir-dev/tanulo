@@ -18,8 +18,7 @@ var tickets = require('./routes/tickets');
 
 var models = require('./models');
 
-var passport = require('passport'),
-    OAuth2Strategy = require('passport-oauth2');
+var passport = require('passport');
 var session = require('express-session');
 
 
@@ -53,51 +52,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new OAuth2Strategy({
-        authorizationURL: 'https://auth.sch.bme.hu/site/login',
-        tokenURL: 'https://auth.sch.bme.hu/oauth2/token',
-        clientID: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
-        callbackURL: "/auth/example/callback",
-        scope: JSON.parse(process.env.SCOPE)
-    },
-    function (accessToken, refreshToken, profile, cb) {
-        var request = require('request');
-        request('https://auth.sch.bme.hu/api/profile?access_token=' + accessToken, function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                return cb(null, JSON.parse(body), null);
-            } else {
-                return cb(new Error('hello'));
-            }
-        });
-    }));
-
-
 app.use(function (req, res, next) {
-    res.locals.logged_in = req.isAuthenticated();
+    res.locals.logged_in = req.isAuthenticated(); //deprecated  if(user) { /* user is defined */ } : don't have to send userData in all routes 
+    res.locals.user = req.user || null;
     res.locals.active = req.path.split('/')[1];
     next();
-});
-
-passport.serializeUser(function (user, done) {
-    models.user.findOrCreate({
-        where: {
-            authschId: user.internal_id
-        },
-        defaults: {
-            name: user.displayName,
-            email: user.mail,
-            admin: false
-        }
-    }).spread(function (user, created) {
-        done(null, user);
-
-    });
-
-});
-
-passport.deserializeUser(function (user, done) {
-    done(null, user);
 });
 
 //ROUTING
