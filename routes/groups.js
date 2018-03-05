@@ -9,7 +9,7 @@ var getGroups = require('../middleware/group/getGroups');
 var getGroup = require('../middleware/group/getGroup');
 var joinGroup = require('../middleware/group/joinGroup');
 
-var requireAuthentication = require('../middleware/user/isAuthenticated');
+var requireAuthentication = require('../middleware/user/requireAuthentication');
 
 router.use(requireAuthentication);
 

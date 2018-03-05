@@ -30,7 +30,7 @@
                           <%= ticket.description %>
                         </p>
                         <span class="media-meta pull-right">
-                         <% if(admin) {%>
+                         <% if(userData.admin) {%>
                           <a href="hibajegyek/delete/<%=ticket.id%>" class="btn btn-danger">Törlés</a>
                           <% } %>
                         </span>

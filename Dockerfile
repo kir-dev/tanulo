@@ -1,4 +1,5 @@
 FROM node:8
+RUN npm install -g bower --save
 
 # Create app directory
 WORKDIR /usr/src/app

@@ -1,34 +1,45 @@
 var addGroup = function (models) {
-    var createGroup = function (groupDTO) {
+    var createGroup = function (groupDTO, id) {
 
         //Check conflicts
-       return models.group.findOne({
+        return models.group.findOne({
             where: {
-                $or: [
-                    {
-                        $and: [
-                            {
-                                startDate: {lt: groupDTO.end_date}
-                            },
-                            {
-                                endDate: {gt: groupDTO.end_date}
-                            }
-                        ]
-                    },
-                    {
-                        $and: [
-                            {
-                                startDate: {lt: groupDTO.start_date}
-                            },
-                            {
-                                endDate: {gt: groupDTO.start_date}
-                            }]
-                    }]
+                $and: [{
+                    id: groupDTO.id
+                }, {
+                    $or: [{
+                            $and: [{
+                                    startDate: {
+                                        lt: groupDTO.end_date
+                                    }
+                                },
+                                {
+                                    endDate: {
+                                        gt: groupDTO.end_date
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            $and: [{
+                                    startDate: {
+                                        lt: groupDTO.start_date
+                                    }
+                                },
+                                {
+                                    endDate: {
+                                        gt: groupDTO.start_date
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }]
             }
 
         }).then(function (event) {
-            if(event !== null){
-               throw new Error('Time conflict');
+            if (event !== null) {
+                throw new Error('Time conflict');
             }
 
             let dnd = false;
@@ -42,22 +53,25 @@ var addGroup = function (models) {
                 startDate: groupDTO.start_date,
                 endDate: groupDTO.end_date,
                 room: groupDTO.room,
+                ownerId: id,
                 doNotDisturb: dnd
             });
         });
     };
 
     return function (req, res, next) {
-        createGroup(req.body).then(function () {
+        createGroup(req.body, req.user.id).then(function () {
 
             return next();
         }).catch(function (error) {
-           if(error.message === 'Time conflict'){
-               res.status('401').send({error: error.message});
-               return;
-           }
+            if (error.message === 'Time conflict') {
+                res.status('401').send({
+                    error: error.message
+                });
+                return;
+            }
 
-           throw error;
+            throw error;
         });
     };
 };

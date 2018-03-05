@@ -8,6 +8,7 @@ var getGroups = function (models) {
     };
 
     return function (req, res, next) {
+        console.log(req.user);
         getAllGroups().then(function (groups) {
             req.group = groups;
 

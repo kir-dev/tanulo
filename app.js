@@ -16,6 +16,8 @@ var history = require('./routes/history');
 var user = require('./routes/users');
 var tickets = require('./routes/tickets');
 
+var models = require('./models');
+
 var passport = require('passport'),
     OAuth2Strategy = require('passport-oauth2');
 var session = require('express-session');
@@ -60,7 +62,6 @@ passport.use(new OAuth2Strategy({
         scope: JSON.parse(process.env.SCOPE)
     },
     function (accessToken, refreshToken, profile, cb) {
-        console.log(accessToken + '\n' + refreshToken + '\n' + JSON.stringify(profile));
         var request = require('request');
         request('https://auth.sch.bme.hu/api/profile?access_token=' + accessToken, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -75,12 +76,24 @@ passport.use(new OAuth2Strategy({
 app.use(function (req, res, next) {
     res.locals.logged_in = req.isAuthenticated();
     res.locals.active = req.path.split('/')[1];
-    console.log(res.locals.active);
     next();
 });
 
 passport.serializeUser(function (user, done) {
-    done(null, user);
+    models.user.findOrCreate({
+        where: {
+            authschId: user.internal_id
+        },
+        defaults: {
+            name: user.displayName,
+            email: user.mail,
+            admin: false
+        }
+    }).spread(function (user, created) {
+        done(null, user);
+
+    });
+
 });
 
 passport.deserializeUser(function (user, done) {
